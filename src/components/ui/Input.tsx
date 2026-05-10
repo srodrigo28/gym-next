@@ -29,20 +29,20 @@ export function Input({ className = "", error, helperText, icon, label, rightTex
       ) : null}
       <div
         className={[
-          "flex h-16 w-full min-w-0 items-center gap-3 rounded-md border bg-[#18181B] px-4 text-white shadow-[#00B37E]/20 transition focus-within:border-[#00B37E] focus-within:shadow-[0_0_0_3px_rgba(0,179,126,0.12)]",
+          "flex h-12 w-full min-w-0 items-center gap-2 rounded-md border bg-[#18181B] px-3 text-white shadow-[#00B37E]/20 transition focus-within:border-[#00B37E] focus-within:shadow-[0_0_0_3px_rgba(0,179,126,0.12)]",
           error ? "border-[#F75A68]" : "border-transparent",
           className,
         ].join(" ")}
       >
         {icon ? (
-          <div className="-my-px -ml-4 flex h-[calc(100%+2px)] w-14 shrink-0 items-center justify-center border-r border-white/10 text-[#8D8D99]">
+          <div className="-my-px -ml-3 flex h-[calc(100%+2px)] w-11 shrink-0 items-center justify-center border-r border-white/10 text-[#8D8D99]">
             {icon}
           </div>
         ) : null}
         <input
           aria-describedby={error ? errorId : helperText ? helperId : undefined}
           aria-invalid={Boolean(error)}
-          className="h-full min-w-0 flex-1 bg-transparent text-base text-white outline-none placeholder:text-[#7C7C8A] autofill:shadow-[inset_0_0_0_1000px_#18181B] autofill:[-webkit-text-fill-color:#FFFFFF]"
+          className="h-full min-w-0 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-[#7C7C8A] autofill:shadow-[inset_0_0_0_1000px_#18181B] autofill:[-webkit-text-fill-color:#FFFFFF]"
           id={id}
           type={inputType}
           {...props}
@@ -50,7 +50,7 @@ export function Input({ className = "", error, helperText, icon, label, rightTex
         {type === "password" ? (
           <button
             aria-label={isHidden ? "Mostrar senha" : "Ocultar senha"}
-            className="-my-px -mr-4 flex h-[calc(100%+2px)] w-14 shrink-0 items-center justify-center border-l border-white/10 text-[#8D8D99] active:opacity-75"
+            className="-my-px -mr-3 flex h-[calc(100%+2px)] w-11 shrink-0 items-center justify-center border-l border-white/10 text-[#8D8D99] active:opacity-75"
             onClick={() => setIsHidden((current) => !current)}
             type="button"
           >

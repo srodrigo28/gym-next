@@ -48,42 +48,42 @@ export default function LoginPage() {
       />
 
       <form
-        className="relative z-10 mx-auto flex min-h-dvh w-full max-w-[430px] flex-col px-6"
+        className="relative z-10 mx-auto flex min-h-dvh w-full max-w-[430px] flex-col px-5"
         noValidate
         onSubmit={handleSubmit(handleSignIn, notifyFormErrors)}
         style={{
-          paddingBottom: "max(72px, env(safe-area-inset-bottom))",
-          paddingTop: "max(72px, env(safe-area-inset-top))",
+          paddingBottom: "max(56px, env(safe-area-inset-bottom))",
+          paddingTop: "max(48px, env(safe-area-inset-top))",
         }}
       >
         <header className="flex flex-col items-center text-center">
-          <div className="flex items-center gap-5">
-            <Dumbbell className="h-11 w-11 text-[#00B37E]" />
-            <h1 className="text-[42px] font-extrabold leading-none text-white drop-shadow-lg">Next Gyn</h1>
+          <div className="flex items-center gap-3">
+            <Dumbbell className="h-8 w-8 text-[#00B37E]" />
+            <h1 className="text-[32px] font-extrabold leading-none text-white drop-shadow-lg">Next Gyn</h1>
           </div>
-          <p className="mt-5 text-[22px] leading-7 text-white/90 drop-shadow">Treine sua mente e o seu corpo</p>
+          <p className="mt-4 text-lg leading-6 text-white/90 drop-shadow">Treine sua mente e o seu corpo</p>
         </header>
 
-        <div className="mx-auto mt-auto grid w-full max-w-[360px] gap-7">
-          <div className="grid gap-4">
-            <h2 className="text-center text-[22px] font-normal leading-7 text-white drop-shadow-lg">
+        <div className="mx-auto mt-auto grid w-full max-w-[360px] gap-5">
+          <div className="grid gap-3">
+            <h2 className="text-center text-lg font-normal leading-6 text-white drop-shadow-lg">
               Acesse sua conta
             </h2>
 
-            <div className="grid gap-4">
+            <div className="grid gap-3">
               <Input
                 autoComplete="email"
-                className="h-16 rounded-lg border-[#00B37E] bg-[#151517]/92 px-4 backdrop-blur-sm focus-within:border-[#00B37E]"
+                className="!h-12 rounded-lg border-[#00B37E] bg-[#151517]/92 px-3 backdrop-blur-sm focus-within:border-[#00B37E]"
                 error={errors.email?.message}
-                icon={<Mail className="h-6 w-6" />}
+                icon={<Mail className="h-5 w-5" />}
                 placeholder="E-mail"
                 type="email"
                 {...register("email")}
               />
               <Input
-                className="h-16 rounded-lg border-[#00B37E] bg-[#151517]/92 px-4 backdrop-blur-sm focus-within:border-[#00B37E]"
+                className="!h-12 rounded-lg border-[#00B37E] bg-[#151517]/92 px-3 backdrop-blur-sm focus-within:border-[#00B37E]"
                 error={errors.password?.message}
-                icon={<Lock className="h-6 w-6" />}
+                icon={<Lock className="h-5 w-5" />}
                 placeholder="Senha"
                 type="password"
                 {...register("password")}
@@ -91,15 +91,15 @@ export default function LoginPage() {
             </div>
 
             {errors.root?.message ? <p className="text-center text-sm text-[#F75A68]">{errors.root.message}</p> : null}
-            <Button className="!h-11 !min-h-11 rounded-lg py-0 text-base" loading={isSubmitting} title="Acessar" type="submit" />
+            <Button className="!h-10 !min-h-10 rounded-lg py-0 text-sm" loading={isSubmitting} title="Acessar" type="submit" />
           </div>
 
-          <div className="grid gap-5">
-            <p className="text-center text-lg font-normal leading-6 text-white/85">Ainda não tem acesso?</p>
+          <div className="grid gap-4">
+            <p className="text-center text-base font-normal leading-5 text-white/85">Ainda não tem acesso?</p>
             <Link className="block w-full" href="/sign-up">
               <Button
-                className="!h-11 !min-h-11 rounded-lg border-[#00B37E] bg-[#121214]/55 py-0 text-base backdrop-blur-sm"
-                icon={<UserPlus className="h-6 w-6" />}
+                className="!h-10 !min-h-10 rounded-lg border-[#00B37E] bg-[#121214]/55 py-0 text-sm backdrop-blur-sm"
+                icon={<UserPlus className="h-5 w-5" />}
                 title="Criar conta"
                 variant="outline"
               />

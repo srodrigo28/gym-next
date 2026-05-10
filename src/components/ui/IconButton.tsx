@@ -11,7 +11,7 @@ export function IconButton({ className = "", icon, label, ...props }: IconButton
   return (
     <button
       aria-label={label}
-      className={`flex h-10 w-10 items-center justify-center rounded-lg border border-[#00B37E]/80 bg-[#121214]/60 text-[#00B37E] transition active:opacity-75 ${className}`}
+      className={`flex h-9 w-9 items-center justify-center rounded-lg border border-[#00B37E]/80 bg-[#121214]/60 text-[#00B37E] transition active:opacity-75 ${className}`}
       type="button"
       {...props}
     >

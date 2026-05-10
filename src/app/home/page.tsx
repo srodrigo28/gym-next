@@ -72,17 +72,17 @@ export default function HomePage() {
   return (
     <section className="relative flex h-dvh flex-col overflow-hidden bg-[#121214] text-white" style={{ paddingTop: "env(safe-area-inset-top)" }}>
       <input ref={inputRef} accept="image/*" className="hidden" onChange={(event) => handleFile(event.target.files?.[0])} type="file" />
-      <header className="relative flex h-[218px] shrink-0 items-end justify-center overflow-hidden sm:h-[240px]">
+      <header className="relative flex h-[22dvh] min-h-[176px] max-h-[210px] shrink-0 items-end justify-center overflow-hidden">
         <Image alt="" className="object-cover opacity-90" fill priority src={coverImage} unoptimized={coverImage.startsWith("data:")} />
         <div className="absolute inset-0 bg-[#121214]/30" />
         <div className="absolute right-3 top-3 grid gap-2">
-          <IconButton icon={<Home className="h-5 w-5" />} label="Ir para a tela inicial de treinos" onClick={() => router.push("/dashboard")} />
-          <IconButton icon={<Pencil className="h-5 w-5" />} label="Alterar perfil" onClick={() => inputRef.current?.click()} />
-          <IconButton icon={<Camera className="h-5 w-5" />} label="Carregar imagem do perfil" onClick={() => inputRef.current?.click()} />
+          <IconButton icon={<Home className="h-[18px] w-[18px]" />} label="Ir para a tela inicial de treinos" onClick={() => router.push("/dashboard")} />
+          <IconButton icon={<Pencil className="h-[18px] w-[18px]" />} label="Alterar perfil" onClick={() => inputRef.current?.click()} />
+          <IconButton icon={<Camera className="h-[18px] w-[18px]" />} label="Carregar imagem do perfil" onClick={() => inputRef.current?.click()} />
         </div>
-        <div className="relative z-10 grid w-full max-w-[420px] gap-1.5 px-4 pb-5 text-center">
-          <h1 className="text-[22px] font-black leading-7 text-white/90 drop-shadow">Caroline Oliveira</h1>
-          <p className="mx-auto max-w-[280px] text-sm leading-5 text-white/75 drop-shadow">Acompanhe suas escolhas, rotina e evolução.</p>
+        <div className="relative z-10 grid w-full max-w-[420px] gap-1 px-4 pb-4 text-center">
+          <h1 className="text-xl font-black leading-6 text-white/90 drop-shadow">Caroline Oliveira</h1>
+          <p className="mx-auto max-w-[260px] text-[13px] leading-[18px] text-white/75 drop-shadow">Acompanhe suas escolhas, rotina e evolução.</p>
           {previewImageUri ? (
             <div className="mt-2 flex justify-center gap-2">
               <button className="flex h-10 items-center gap-2 rounded-lg bg-[#00875F] px-4 text-sm font-black text-white" onClick={() => { setProfileImageUri(previewImageUri); setPreviewImageUri(null); }} type="button">
@@ -98,39 +98,39 @@ export default function HomePage() {
         </div>
       </header>
 
-      <div className="grid shrink-0 gap-4 px-4 py-3">
-        <div className="grid gap-4">
+      <div className="grid shrink-0 gap-3 px-4 py-3">
+        <div className="grid gap-3">
           <div className="grid grid-cols-3 gap-2">
-            <SummaryPill icon={<Target className="h-[18px] w-[18px]" />} label="Objetivo" value="Ganho dia" />
-            <SummaryPill icon={<ChartLine className="h-[18px] w-[18px]" />} label="Nivel" value="Iniciante" />
-            <SummaryPill icon={<Check className="h-[18px] w-[18px]" />} label="Rotina" value="4x semana" />
+            <SummaryPill icon={<Target className="h-4 w-4" />} label="Objetivo" value="Ganho dia" />
+            <SummaryPill icon={<ChartLine className="h-4 w-4" />} label="Nivel" value="Iniciante" />
+            <SummaryPill icon={<Check className="h-4 w-4" />} label="Rotina" value="4x semana" />
           </div>
 
           <div className="text-center">
-            <h2 className="text-lg font-black text-white">Menu rápido</h2>
+            <h2 className="text-base font-black text-white">Menu rápido</h2>
           </div>
 
         </div>
       </div>
 
-      <div className="profile-scroll min-h-0 flex-1 overflow-y-auto pl-4 pr-2 pb-[calc(88px+env(safe-area-inset-bottom))]">
-        <div className="grid gap-2 pb-4">
-          <div className="grid gap-2">
+      <div className="profile-scroll min-h-0 flex-1 overflow-y-auto px-4 pb-[calc(76px+env(safe-area-inset-bottom))]">
+        <div className="grid gap-3 pb-4">
+          <div className="grid gap-3">
             {menuItems.map((item) => (
               <ProfileMenuCard key={item.title} item={item} />
             ))}
           </div>
 
-          <button className="flex min-h-[92px] items-center gap-3 rounded-lg border border-[#00B37E] bg-[#13231E] p-3 text-left active:opacity-80" type="button">
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-[#121214] text-[#00B37E]">
-              <Ruler className="h-7 w-7" />
+          <button className="flex min-h-[84px] items-center gap-3.5 rounded-lg border border-[#00B37E] bg-[#13231E] p-3.5 text-left active:opacity-80" type="button">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#121214] text-[#00B37E]">
+              <Ruler className="h-6 w-6" />
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-xs font-extrabold uppercase text-[#00B37E]">Em breve</p>
-              <h2 className="text-base font-black leading-5 text-white">Evolução corporal</h2>
+              <h2 className="text-[15px] font-black leading-[18px] text-white">Evolução corporal</h2>
               <p className="text-xs leading-[17px] text-[#C4C4CC]">Peso, medidas, fotos e progresso em uma linha do tempo visual.</p>
             </div>
-            <ArrowRight className="h-5 w-5 shrink-0 text-[#C4C4CC]" />
+            <ArrowRight className="h-4 w-4 shrink-0 text-[#C4C4CC]" />
           </button>
         </div>
       </div>
@@ -147,10 +147,10 @@ export default function HomePage() {
 
 function SummaryPill({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
-    <div className="flex min-h-[78px] flex-col items-center justify-center gap-1 rounded-lg bg-[#202024] p-2 text-center">
+    <div className="flex min-h-[66px] flex-col items-center justify-center gap-0.5 rounded-lg bg-[#202024] p-2 text-center">
       <span className="text-[#00B37E]">{icon}</span>
-      <span className="text-xs font-bold text-[#C4C4CC]">{label}</span>
-      <span className="text-[13px] font-black leading-4 text-white">{value}</span>
+      <span className="text-[11px] font-bold text-[#C4C4CC]">{label}</span>
+      <span className="text-xs font-black leading-4 text-white">{value}</span>
     </div>
   );
 }
@@ -158,15 +158,15 @@ function SummaryPill({ icon, label, value }: { icon: React.ReactNode; label: str
 function ProfileMenuCard({ item }: { item: (typeof menuItems)[number] }) {
   const Icon = item.icon;
   return (
-    <button className="flex min-h-[92px] items-center gap-3 rounded-lg bg-[#202024] p-3 text-left active:opacity-80" type="button">
-      <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-lg ${item.tone}`}>
-        <Icon className="h-7 w-7 text-white" />
+    <button className="flex min-h-[84px] items-center gap-3.5 rounded-lg bg-[#202024] p-3.5 text-left active:opacity-80" type="button">
+      <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${item.tone}`}>
+        <Icon className="h-6 w-6 text-white" />
       </div>
       <div className="min-w-0 flex-1">
-        <h3 className="text-[15px] font-black leading-5 text-white">{item.title}</h3>
-        <p className="mt-0.5 text-xs leading-[17px] text-[#C4C4CC]">{item.description}</p>
+        <h3 className="text-sm font-black leading-[18px] text-white">{item.title}</h3>
+        <p className="mt-0.5 text-[11px] leading-[15px] text-[#C4C4CC]">{item.description}</p>
       </div>
-      <ArrowRight className="h-5 w-5 shrink-0 text-[#C4C4CC]" />
+      <ArrowRight className="h-4 w-4 shrink-0 text-[#C4C4CC]" />
     </button>
   );
 }

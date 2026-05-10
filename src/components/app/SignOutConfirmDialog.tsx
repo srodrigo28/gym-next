@@ -15,19 +15,19 @@ export function SignOutConfirmDialog({ isLoading, isOpen, onClose, onConfirm }: 
 
   return (
     <div className="absolute inset-0 z-50 flex items-end justify-center bg-black/70 px-4 pb-4 pt-10 backdrop-blur-sm" role="presentation">
-      <div aria-labelledby="sign-out-title" aria-modal="true" className="w-full rounded-2xl border border-[#29292E] bg-[#202024] p-5 shadow-2xl shadow-black/50" role="dialog">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#3B1F25] text-[#F75A68]">
-          <LogOut className="h-7 w-7" />
+      <div aria-labelledby="sign-out-title" aria-modal="true" className="w-full rounded-xl border border-[#29292E] bg-[#202024] p-4 shadow-2xl shadow-black/50" role="dialog">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#3B1F25] text-[#F75A68]">
+          <LogOut className="h-6 w-6" />
         </div>
 
-        <div className="mt-4 text-center">
-          <h2 className="text-xl font-black text-white" id="sign-out-title">Sair da conta?</h2>
-          <p className="mt-2 text-sm leading-5 text-[#C4C4CC]">Voce voltara para a tela de login e podera acessar novamente quando quiser.</p>
+        <div className="mt-3 text-center">
+          <h2 className="text-lg font-black text-white" id="sign-out-title">Sair da conta?</h2>
+          <p className="mt-2 text-[13px] leading-[18px] text-[#C4C4CC]">Voce voltara para a tela de login e podera acessar novamente quando quiser.</p>
         </div>
 
-        <div className="mt-5 grid gap-3">
-          <Button className="h-12 border-[#F75A68] bg-[#F75A68] text-base" icon={<LogOut className="h-5 w-5" />} loading={isLoading} onClick={onConfirm} title="Sim, sair" />
-          <Button className="h-12 text-base" disabled={isLoading} onClick={onClose} title="Continuar no app" variant="outline" />
+        <div className="mt-4 grid gap-2">
+          <Button className="!h-11 !min-h-11 border-[#F75A68] bg-[#F75A68] text-sm" icon={<LogOut className="h-4 w-4" />} loading={isLoading} onClick={onConfirm} title="Sim, sair" />
+          <Button className="!h-11 !min-h-11 text-sm" disabled={isLoading} onClick={onClose} title="Continuar no app" variant="outline" />
         </div>
       </div>
     </div>
