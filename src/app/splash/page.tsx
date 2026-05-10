@@ -20,7 +20,7 @@ export default function SplashPage() {
     <AuthBackground contentClassName="flex items-center justify-center">
       <div className="flex flex-col items-center gap-3">
         <Dumbbell className="h-14 w-14 text-[#00B37E]" />
-        <h1 className="text-[42px] font-bold text-white">Ignite Gym</h1>
+        <h1 className="text-[42px] font-bold text-white">Next Gyn</h1>
         <p className="text-lg text-[#C4C4CC]">Treine sua mente e o seu corpo</p>
       </div>
     </AuthBackground>

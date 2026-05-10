@@ -33,7 +33,11 @@ export function Input({ className = "", error, helperText, icon, label, rightTex
           className,
         ].join(" ")}
       >
-        {icon ? <div className="text-[#7C7C8A]">{icon}</div> : null}
+        {icon ? (
+          <div className="-my-px -ml-4 flex h-[calc(100%+2px)] w-14 shrink-0 items-center justify-center border-r border-white/10 text-[#8D8D99]">
+            {icon}
+          </div>
+        ) : null}
         <input
           aria-describedby={error ? errorId : helperText ? helperId : undefined}
           aria-invalid={Boolean(error)}
@@ -45,7 +49,7 @@ export function Input({ className = "", error, helperText, icon, label, rightTex
         {type === "password" ? (
           <button
             aria-label={isHidden ? "Mostrar senha" : "Ocultar senha"}
-            className="flex h-10 w-10 items-center justify-center rounded-md text-[#7C7C8A] active:opacity-75"
+            className="-my-px -mr-4 flex h-[calc(100%+2px)] w-14 shrink-0 items-center justify-center border-l border-white/10 text-[#8D8D99] active:opacity-75"
             onClick={() => setIsHidden((current) => !current)}
             type="button"
           >

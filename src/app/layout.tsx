@@ -15,13 +15,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ignite Gym",
+  title: "Next Gyn",
   description: "Treinos, rotina e evolução em uma experiência mobile.",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Ignite Gym",
+    title: "Next Gyn",
   },
   icons: {
     icon: "/icon.png",
