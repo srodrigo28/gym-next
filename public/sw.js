@@ -1,6 +1,5 @@
-const CACHE_NAME = "next-gyn-shell-v3";
+const CACHE_NAME = "next-gyn-shell-v4";
 const STATIC_ASSETS = [
-  "/",
   "/splash",
   "/manifest.webmanifest",
   "/icon.png",
@@ -36,12 +35,15 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  if (url.pathname.startsWith("/_next/") || request.destination === "script") {
+    event.respondWith(fetch(request));
+    return;
+  }
+
   if (request.mode === "navigate") {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
           return response;
         })
         .catch(() => caches.match(request).then((cached) => cached ?? caches.match("/splash"))),
@@ -49,7 +51,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  if (["image", "font", "style", "script", "manifest"].includes(request.destination)) {
+  if (["image", "font", "style", "manifest"].includes(request.destination)) {
     event.respondWith(
       caches.match(request).then((cached) => {
         const fresh = fetch(request)

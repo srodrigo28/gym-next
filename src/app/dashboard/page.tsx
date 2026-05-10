@@ -63,6 +63,17 @@ export default function DashboardPage() {
   const [selectedCategory, setSelectedCategory] = useState<Category>("Bíceps");
   const exercises = exercisesByCategory[selectedCategory];
 
+  function openExercise(title: string) {
+    const id = title
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+
+    router.push(`/exercicio/${id}`);
+  }
+
   async function handleSignOut() {
     setIsSigningOut(true);
     await signOut();
@@ -118,7 +129,7 @@ export default function DashboardPage() {
               const Icon = exercise.icon;
 
               return (
-                <button className="flex min-h-[86px] w-full items-center gap-3.5 rounded-lg bg-[#29292E] p-3.5 text-left active:opacity-80" key={exercise.title} type="button">
+                <button className="flex min-h-[86px] w-full items-center gap-3.5 rounded-lg bg-[#29292E] p-3.5 text-left active:opacity-80" key={exercise.title} onClick={() => openExercise(exercise.title)} type="button">
                   <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-lg" style={{ backgroundColor: exercise.tone }}>
                     <Icon className="h-6 w-6 text-white" />
                   </div>
