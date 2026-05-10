@@ -1,7 +1,7 @@
 {
   "name": "Next Gyn",
   "short_name": "Next Gyn",
-  "description": "Treinos, rotina e evolucao em uma experiencia mobile.",
+  "description": "Treinos, rotina e evolução em uma experiência mobile.",
   "id": "/?source=pwa",
   "start_url": "/",
   "scope": "/",

@@ -22,7 +22,7 @@ export function SignOutConfirmDialog({ isLoading, isOpen, onClose, onConfirm }: 
 
         <div className="mt-3 text-center">
           <h2 className="text-lg font-black text-white" id="sign-out-title">Sair da conta?</h2>
-          <p className="mt-2 text-[13px] leading-[18px] text-[#C4C4CC]">Voce voltara para a tela de login e podera acessar novamente quando quiser.</p>
+          <p className="mt-2 text-[13px] leading-[18px] text-[#C4C4CC]">Você voltará para a tela de login e poderá acessar novamente quando quiser.</p>
         </div>
 
         <div className="mt-4 grid gap-2">

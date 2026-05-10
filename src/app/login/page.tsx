@@ -29,7 +29,7 @@ export default function LoginPage() {
       await signIn(payload);
       router.replace("/home");
     } catch (error) {
-      notifyAppError(error, "Nao foi possivel acessar sua conta.");
+      notifyAppError(error, "Não foi possível acessar sua conta.");
       setError("root", {
         message: error instanceof Error ? error.message : "Não foi possível acessar sua conta.",
       });

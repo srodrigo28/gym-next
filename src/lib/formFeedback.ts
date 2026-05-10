@@ -2,7 +2,7 @@ import type { FieldErrors, FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 
 const FALLBACK_VALIDATION_MESSAGE = "Revise os campos destacados para continuar.";
-const FALLBACK_ERROR_MESSAGE = "Nao foi possivel concluir. Tente novamente.";
+const FALLBACK_ERROR_MESSAGE = "Não foi possível concluir. Tente novamente.";
 
 function findFirstMessage(value: unknown): string | null {
   if (!value || typeof value !== "object") {

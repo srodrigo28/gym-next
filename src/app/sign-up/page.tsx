@@ -29,7 +29,7 @@ export default function SignUpPage() {
       await signUp(payload);
       router.replace("/onboarding");
     } catch (error) {
-      notifyAppError(error, "Nao foi possivel criar sua conta.");
+      notifyAppError(error, "Não foi possível criar sua conta.");
       setError("root", {
         message: error instanceof Error ? error.message : "Não foi possível criar sua conta.",
       });

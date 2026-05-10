@@ -108,7 +108,7 @@ export function PwaRegister() {
   return (
     <div className={`pwa-install-shell ${isVisible ? "pwa-install-shell-visible" : ""}`} aria-live="polite">
       <div className="pwa-install-card">
-        <button aria-label="Fechar sugestao de instalacao" className="pwa-install-close" onClick={handleDismiss} type="button">
+        <button aria-label="Fechar sugestão de instalação" className="pwa-install-close" onClick={handleDismiss} type="button">
           <X className="h-5 w-5" />
         </button>
 
@@ -120,10 +120,10 @@ export function PwaRegister() {
           <p className="text-sm font-black text-white">Instalar Next Gyn</p>
           {showManualHelp && !installPrompt ? (
             <p className="mt-1 text-xs leading-4 text-[#C4C4CC]">
-              Toque em <Share className="inline h-3.5 w-3.5" /> ou no menu do navegador e escolha Adicionar a Tela de Inicio.
+              Toque em <Share className="inline h-3.5 w-3.5" /> ou no menu do navegador e escolha Adicionar à tela inicial.
             </p>
           ) : (
-            <p className="mt-1 text-xs leading-4 text-[#C4C4CC]">Abra mais rapido, em tela cheia e com melhor experiencia mobile.</p>
+            <p className="mt-1 text-xs leading-4 text-[#C4C4CC]">Abra mais rápido, em tela cheia e com melhor experiência mobile.</p>
           )}
         </div>
 
