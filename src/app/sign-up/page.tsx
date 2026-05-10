@@ -49,12 +49,12 @@ export default function SignUpPage() {
       />
 
       <form
-        className="relative z-10 flex min-h-dvh flex-col px-10"
+        className="relative z-10 mx-auto flex min-h-dvh w-full max-w-[430px] flex-col px-6"
         noValidate
         onSubmit={handleSubmit(handleSignUp, notifyFormErrors)}
         style={{
-          paddingBottom: "max(80px, env(safe-area-inset-bottom))",
-          paddingTop: "max(128px, env(safe-area-inset-top))",
+          paddingBottom: "max(64px, env(safe-area-inset-bottom))",
+          paddingTop: "max(88px, env(safe-area-inset-top))",
         }}
       >
         <header className="flex flex-col items-center text-center">
@@ -65,7 +65,7 @@ export default function SignUpPage() {
           <p className="mt-4 text-[22px] leading-7 text-white/90 drop-shadow">Treine sua mente e o seu corpo</p>
         </header>
 
-        <div className="mt-auto grid gap-6">
+        <div className="mx-auto mt-auto grid w-full max-w-[360px] gap-6">
           <div className="grid gap-4">
             <h2
               className="text-center text-[30px] font-extrabold leading-9 text-white"
@@ -111,7 +111,7 @@ export default function SignUpPage() {
 
             {errors.root?.message ? <p className="text-center text-sm text-[#F75A68]">{errors.root.message}</p> : null}
             <div className="grid grid-cols-2 gap-3">
-              <Link href="/login">
+              <Link className="block w-full min-w-0" href="/login">
                 <Button
                   className="!h-11 !min-h-11 rounded-lg border-[#00B37E] bg-[#121214]/55 py-0 text-base backdrop-blur-sm"
                   icon={<ArrowLeft className="h-5 w-5" />}

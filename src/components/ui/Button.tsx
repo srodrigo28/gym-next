@@ -16,7 +16,7 @@ export function Button({ className = "", disabled, icon, loading = false, title,
   return (
     <button
       className={[
-        "flex h-16 w-full items-center justify-center gap-2 rounded-lg border text-lg font-bold transition active:scale-[0.99]",
+        "flex h-16 w-full min-w-0 items-center justify-center gap-2 rounded-lg border text-lg font-bold transition active:scale-[0.99]",
         variant === "outline"
           ? "border-[#00B37E] bg-transparent text-[#00B37E]"
           : "border-[#00875F] bg-[#00875F] text-white",

@@ -21,7 +21,7 @@ export function Input({ className = "", error, helperText, icon, label, rightTex
   const errorId = `${id}-error`;
 
   return (
-    <div className="grid gap-1.5">
+    <div className="grid w-full min-w-0 gap-1.5">
       {label ? (
         <label className="text-sm font-bold text-white" htmlFor={id}>
           {label}
@@ -29,7 +29,7 @@ export function Input({ className = "", error, helperText, icon, label, rightTex
       ) : null}
       <div
         className={[
-          "flex h-16 items-center gap-3 rounded-md border bg-[#18181B] px-4 text-white shadow-[#00B37E]/20 transition focus-within:border-[#00B37E] focus-within:shadow-[0_0_0_3px_rgba(0,179,126,0.12)]",
+          "flex h-16 w-full min-w-0 items-center gap-3 rounded-md border bg-[#18181B] px-4 text-white shadow-[#00B37E]/20 transition focus-within:border-[#00B37E] focus-within:shadow-[0_0_0_3px_rgba(0,179,126,0.12)]",
           error ? "border-[#F75A68]" : "border-transparent",
           className,
         ].join(" ")}

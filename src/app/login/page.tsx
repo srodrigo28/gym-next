@@ -48,12 +48,12 @@ export default function LoginPage() {
       />
 
       <form
-        className="relative z-10 flex min-h-dvh flex-col px-10"
+        className="relative z-10 mx-auto flex min-h-dvh w-full max-w-[430px] flex-col px-6"
         noValidate
         onSubmit={handleSubmit(handleSignIn, notifyFormErrors)}
         style={{
-          paddingBottom: "max(80px, env(safe-area-inset-bottom))",
-          paddingTop: "max(80px, env(safe-area-inset-top))",
+          paddingBottom: "max(72px, env(safe-area-inset-bottom))",
+          paddingTop: "max(72px, env(safe-area-inset-top))",
         }}
       >
         <header className="flex flex-col items-center text-center">
@@ -64,7 +64,7 @@ export default function LoginPage() {
           <p className="mt-5 text-[22px] leading-7 text-white/90 drop-shadow">Treine sua mente e o seu corpo</p>
         </header>
 
-        <div className="mt-auto grid gap-7">
+        <div className="mx-auto mt-auto grid w-full max-w-[360px] gap-7">
           <div className="grid gap-4">
             <h2 className="text-center text-[22px] font-normal leading-7 text-white drop-shadow-lg">
               Acesse sua conta
@@ -96,7 +96,7 @@ export default function LoginPage() {
 
           <div className="grid gap-5">
             <p className="text-center text-lg font-normal leading-6 text-white/85">Ainda não tem acesso?</p>
-            <Link href="/sign-up">
+            <Link className="block w-full" href="/sign-up">
               <Button
                 className="!h-11 !min-h-11 rounded-lg border-[#00B37E] bg-[#121214]/55 py-0 text-base backdrop-blur-sm"
                 icon={<UserPlus className="h-6 w-6" />}
