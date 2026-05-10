@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { signIn } from "@/lib/auth";
+import { notifyAppError, notifyFormErrors } from "@/lib/formFeedback";
 import { signInSchema } from "@/schemas/auth";
 import type { SignInPayload } from "@/types/auth";
 
@@ -28,6 +29,7 @@ export default function LoginPage() {
       await signIn(payload);
       router.replace("/home");
     } catch (error) {
+      notifyAppError(error, "Nao foi possivel acessar sua conta.");
       setError("root", {
         message: error instanceof Error ? error.message : "Não foi possível acessar sua conta.",
       });
@@ -48,7 +50,7 @@ export default function LoginPage() {
       <form
         className="relative z-10 flex min-h-dvh flex-col px-10"
         noValidate
-        onSubmit={handleSubmit(handleSignIn)}
+        onSubmit={handleSubmit(handleSignIn, notifyFormErrors)}
         style={{
           paddingBottom: "max(80px, env(safe-area-inset-bottom))",
           paddingTop: "max(80px, env(safe-area-inset-top))",

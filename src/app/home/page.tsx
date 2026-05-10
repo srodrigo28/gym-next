@@ -12,7 +12,6 @@ import {
   Dumbbell,
   Home,
   Lightbulb,
-  LogOut,
   Pencil,
   Quote,
   Ruler,
@@ -23,13 +22,14 @@ import {
   X,
 } from "lucide-react";
 import { IconButton } from "@/components/ui/IconButton";
-import { Button } from "@/components/ui/Button";
+import { AppBottomNav } from "@/components/app/AppBottomNav";
 import { AppLoading } from "@/components/app/AppLoading";
+import { SignOutConfirmDialog } from "@/components/app/SignOutConfirmDialog";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { signOut } from "@/lib/auth";
 
 const menuItems = [
-  { description: "Conecte relógios e dispositivos para acompanhar atividade e saúde.", icon: Watch, title: "Sincronizar dispositivos", tone: "bg-[#D97706]" },
+  { description: "Seus dispositivos conectados à sua saúde.", icon: Watch, title: "Sincronizar dispositivos", tone: "bg-[#D97706]" },
   { description: "Cadastre refeições comuns, horários e hábitos do dia a dia.", icon: Apple, title: "Alimentações diárias", tone: "bg-[#0F766E]" },
   { description: "Escolha ideias de alimentação alinhadas ao seu objetivo atual.", icon: Utensils, title: "Alimentação ideal para escolher", tone: "bg-[#BE185D]" },
   { description: "Escolha estilos, foco e disponibilidade para seus treinos.", icon: Dumbbell, title: "Escolhas de treinos", tone: "bg-[#2563EB]" },
@@ -70,19 +70,18 @@ export default function HomePage() {
   }
 
   return (
-    <section className="flex min-h-dvh flex-col bg-[#121214] text-white" style={{ paddingTop: "env(safe-area-inset-top)" }}>
+    <section className="relative flex h-dvh flex-col overflow-hidden bg-[#121214] text-white" style={{ paddingTop: "env(safe-area-inset-top)" }}>
       <input ref={inputRef} accept="image/*" className="hidden" onChange={(event) => handleFile(event.target.files?.[0])} type="file" />
-      <header className="relative flex h-[274px] items-end justify-center overflow-hidden">
+      <header className="relative flex h-[274px] shrink-0 items-end justify-center overflow-hidden">
         <Image alt="" className="object-cover opacity-90" fill priority src={coverImage} unoptimized={coverImage.startsWith("data:")} />
         <div className="absolute inset-0 bg-[#121214]/30" />
         <div className="absolute right-4 top-4 grid gap-2">
           <IconButton icon={<Home className="h-6 w-6" />} label="Ir para a tela inicial de treinos" onClick={() => router.push("/dashboard")} />
           <IconButton icon={<Pencil className="h-6 w-6" />} label="Alterar perfil" onClick={() => inputRef.current?.click()} />
           <IconButton icon={<Camera className="h-6 w-6" />} label="Carregar imagem do perfil" onClick={() => inputRef.current?.click()} />
-          <IconButton className="border-[#F75A68]/80 text-[#F75A68]" icon={<LogOut className="h-6 w-6" />} label="Sair da conta" onClick={() => setIsSignOutOpen(true)} />
         </div>
         <div className="relative z-10 grid w-full max-w-[420px] gap-2 px-4 pb-6 text-center">
-          <h1 className="text-2xl font-black text-white/90 drop-shadow">Rodrigo Gonçalves</h1>
+          <h1 className="text-2xl font-black text-white/90 drop-shadow">Caroline Oliveira</h1>
           <p className="mx-auto max-w-[300px] text-[15px] leading-5 text-white/75 drop-shadow">Acompanhe suas escolhas, rotina e evolução.</p>
           {previewImageUri ? (
             <div className="mt-2 flex justify-center gap-2">
@@ -99,19 +98,23 @@ export default function HomePage() {
         </div>
       </header>
 
-      <div className="app-scroll flex-1 overflow-y-auto px-4 py-4">
-        <div className="grid gap-6 pb-8">
+      <div className="grid shrink-0 gap-6 px-4 py-4">
+        <div className="grid gap-6">
           <div className="grid grid-cols-3 gap-2">
-            <SummaryPill icon={<Target className="h-5 w-5" />} label="Objetivo" value="Ganho de massa" />
+            <SummaryPill icon={<Target className="h-5 w-5" />} label="Objetivo" value="Ganho dia" />
             <SummaryPill icon={<ChartLine className="h-5 w-5" />} label="Nivel" value="Iniciante" />
             <SummaryPill icon={<Check className="h-5 w-5" />} label="Rotina" value="4x semana" />
           </div>
 
           <div className="text-center">
-            <h2 className="text-xl font-black text-white">Menu do perfil</h2>
-            <p className="mt-1 text-sm leading-5 text-[#C4C4CC]">Escolha uma área para ajustar sua experiência.</p>
+            <h2 className="text-xl font-black text-white">Menu rápido</h2>
           </div>
 
+        </div>
+      </div>
+
+      <div className="profile-scroll min-h-0 flex-1 overflow-y-auto pl-4 pr-2 pb-[calc(110px+env(safe-area-inset-bottom))]">
+        <div className="grid gap-2 pb-4">
           <div className="grid gap-2">
             {menuItems.map((item) => (
               <ProfileMenuCard key={item.title} item={item} />
@@ -131,6 +134,7 @@ export default function HomePage() {
           </button>
         </div>
       </div>
+      <AppBottomNav active="profile" onSignOut={() => setIsSignOutOpen(true)} />
       <SignOutConfirmDialog
         isLoading={isSigningOut}
         isOpen={isSignOutOpen}
@@ -164,29 +168,5 @@ function ProfileMenuCard({ item }: { item: (typeof menuItems)[number] }) {
       </div>
       <ArrowRight className="h-5 w-5 text-[#C4C4CC]" />
     </button>
-  );
-}
-
-function SignOutConfirmDialog({ isLoading, isOpen, onClose, onConfirm }: { isLoading: boolean; isOpen: boolean; onClose: () => void; onConfirm: () => void }) {
-  if (!isOpen) return null;
-
-  return (
-    <div className="absolute inset-0 z-50 flex items-end justify-center bg-black/70 px-4 pb-4 pt-10 backdrop-blur-sm" role="presentation">
-      <div aria-labelledby="sign-out-title" aria-modal="true" className="w-full rounded-2xl border border-[#29292E] bg-[#202024] p-5 shadow-2xl shadow-black/50" role="dialog">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#3B1F25] text-[#F75A68]">
-          <LogOut className="h-7 w-7" />
-        </div>
-
-        <div className="mt-4 text-center">
-          <h2 className="text-xl font-black text-white" id="sign-out-title">Sair da conta?</h2>
-          <p className="mt-2 text-sm leading-5 text-[#C4C4CC]">Voce voltara para a tela de login e podera acessar novamente quando quiser.</p>
-        </div>
-
-        <div className="mt-5 grid gap-3">
-          <Button className="h-12 border-[#F75A68] bg-[#F75A68] text-base" icon={<LogOut className="h-5 w-5" />} loading={isLoading} onClick={onConfirm} title="Sim, sair" />
-          <Button className="h-12 text-base" disabled={isLoading} onClick={onClose} title="Continuar no app" variant="outline" />
-        </div>
-      </div>
-    </div>
   );
 }

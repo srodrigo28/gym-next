@@ -12,14 +12,13 @@ type OnboardingFooterProps = {
   onNext: () => void;
 };
 
-export function OnboardingFooter({ canGoBack, canGoNext, loading, nextLabel = "Continuar", onBack, onNext }: OnboardingFooterProps) {
+export function OnboardingFooter({ canGoBack, loading, nextLabel = "Continuar", onBack, onNext }: OnboardingFooterProps) {
   const icon = nextLabel === "Finalizar" ? <CheckCircle className="h-5 w-5" /> : <ArrowRight className="h-5 w-5" />;
 
   if (!canGoBack) {
     return (
       <Button
         className="h-[52px]"
-        disabled={!canGoNext}
         icon={icon}
         loading={loading}
         onClick={onNext}
@@ -34,7 +33,7 @@ export function OnboardingFooter({ canGoBack, canGoNext, loading, nextLabel = "C
         <Button className="h-[52px] text-base" icon={<ArrowLeft className="h-5 w-5" />} onClick={onBack} title="Voltar" variant="outline" />
       </div>
       <div className="flex-[1.1]">
-        <Button className="h-[52px] text-base" disabled={!canGoNext} icon={icon} loading={loading} onClick={onNext} title={nextLabel} />
+        <Button className="h-[52px] text-base" icon={icon} loading={loading} onClick={onNext} title={nextLabel} />
       </div>
     </div>
   );

@@ -2,41 +2,53 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Dumbbell, History, Home, LogOut, UserCircle, Weight } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Dumbbell, UserCircle, Weight } from "lucide-react";
+import { AppBottomNav } from "@/components/app/AppBottomNav";
 import { AppLoading } from "@/components/app/AppLoading";
+import { SignOutConfirmDialog } from "@/components/app/SignOutConfirmDialog";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
+import { signOut } from "@/lib/auth";
 
-const categories = ["Costas", "Bíceps", "Tríceps", "Ombro"];
+const categories = ["Costas", "Biceps", "Triceps", "Ombro"];
 
 const exercises = [
-  { icon: Weight, subtitle: "3 séries x 12 repetições", title: "Puxada frontal", tone: "#0E7490" },
-  { icon: Dumbbell, subtitle: "3 séries x 12 repetições", title: "Remada curvada", tone: "#7C3AED" },
-  { icon: Dumbbell, subtitle: "3 séries x 12 repetições", title: "Remada unilateral", tone: "#2563EB" },
-  { icon: Weight, subtitle: "3 séries x 12 repetições", title: "Levantamento terra", tone: "#B7791F" },
+  { icon: Weight, subtitle: "3 series x 12 repeticoes", title: "Puxada frontal", tone: "#0E7490" },
+  { icon: Dumbbell, subtitle: "3 series x 12 repeticoes", title: "Remada curvada", tone: "#7C3AED" },
+  { icon: Dumbbell, subtitle: "3 series x 12 repeticoes", title: "Remada unilateral", tone: "#2563EB" },
+  { icon: Weight, subtitle: "3 series x 12 repeticoes", title: "Levantamento terra", tone: "#B7791F" },
 ];
 
 export default function DashboardPage() {
   const router = useRouter();
   const { isChecking } = useRequireAuth();
+  const [isSignOutOpen, setIsSignOutOpen] = useState(false);
+  const [isSigningOut, setIsSigningOut] = useState(false);
+
+  async function handleSignOut() {
+    setIsSigningOut(true);
+    await signOut();
+    router.replace("/login");
+  }
 
   if (isChecking) {
     return <AppLoading message="Carregando treinos" />;
   }
 
   return (
-    <section className="flex min-h-dvh flex-col bg-[#121214] text-white" style={{ paddingTop: "env(safe-area-inset-top)" }}>
+    <section className="relative flex h-dvh flex-col overflow-hidden bg-[#121214] text-white" style={{ paddingTop: "env(safe-area-inset-top)" }}>
       <header className="flex min-h-[132px] items-center gap-4 bg-[#202024] px-8">
         <Image alt="Avatar" className="rounded-full border-2 border-[#29292E]" height={78} src="/icon.png" width={78} />
         <div className="min-w-0 flex-1">
-          <p className="text-xl text-[#C4C4CC]">Olá,</p>
-          <h1 className="truncate text-2xl font-black text-white">Rodrigo Gonçalves</h1>
+          <p className="text-xl text-[#C4C4CC]">Ola,</p>
+          <h1 className="truncate text-2xl font-black text-white">Caroline Oliveira</h1>
         </div>
         <button aria-label="Voltar para o perfil" className="flex h-12 w-12 items-center justify-center rounded-lg text-[#C4C4CC] active:opacity-75" onClick={() => router.push("/home")} type="button">
-          <LogOut className="h-7 w-7" />
+          <UserCircle className="h-7 w-7" />
         </button>
       </header>
 
-      <div className="app-scroll flex-1 overflow-y-auto pb-4">
+      <div className="app-scroll min-h-0 flex-1 overflow-y-auto pb-[calc(110px+env(safe-area-inset-bottom))]">
         <div className="grid gap-8 py-8">
           <div className="app-scroll flex gap-4 overflow-x-auto px-8">
             {categories.map((category, index) => (
@@ -52,7 +64,7 @@ export default function DashboardPage() {
           </div>
 
           <div className="flex items-center justify-between px-8">
-            <h2 className="text-2xl font-black text-[#C4C4CC]">Exercícios</h2>
+            <h2 className="text-2xl font-black text-[#C4C4CC]">Exercicios</h2>
             <span className="text-[22px] text-[#C4C4CC]">{exercises.length}</span>
           </div>
 
@@ -76,17 +88,13 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      <nav className="flex h-[86px] items-center justify-around bg-[#202024] pb-2" style={{ paddingBottom: "max(8px, env(safe-area-inset-bottom))" }}>
-        <button aria-label="Início" className="flex h-14 w-[72px] items-center justify-center text-[#00B37E]" type="button">
-          <Home className="h-8 w-8" />
-        </button>
-        <button aria-label="Histórico" className="flex h-14 w-[72px] items-center justify-center text-[#C4C4CC]" type="button">
-          <History className="h-8 w-8" />
-        </button>
-        <button aria-label="Abrir perfil" className="flex h-14 w-[72px] items-center justify-center text-[#C4C4CC]" onClick={() => router.push("/home")} type="button">
-          <UserCircle className="h-8 w-8" />
-        </button>
-      </nav>
+      <AppBottomNav active="home" onSignOut={() => setIsSignOutOpen(true)} />
+      <SignOutConfirmDialog
+        isLoading={isSigningOut}
+        isOpen={isSignOutOpen}
+        onClose={() => setIsSignOutOpen(false)}
+        onConfirm={handleSignOut}
+      />
     </section>
   );
 }

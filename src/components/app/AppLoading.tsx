@@ -27,7 +27,7 @@ export function AppLoading({ className = "", message = "Carregando" }: AppLoadin
         </svg>
       </div>
 
-      <div className="mt-5 h-2 w-full max-w-[220px] overflow-hidden rounded-full bg-[#29292E]">
+      <div className="mt-5 h-2 w-[80%] max-w-[344px] overflow-hidden rounded-full bg-[#29292E]">
         <div className="app-loading-bar h-full rounded-full bg-[#00B37E]" />
       </div>
 

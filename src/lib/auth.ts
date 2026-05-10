@@ -26,7 +26,7 @@ export async function signIn(payload: SignInPayload) {
     throw new Error("E-mail ou senha inválidos.");
   }
 
-  const response = createAuthResponse("Rodrigo Gonçalves", payload.email);
+  const response = createAuthResponse("Caroline Oliveira", payload.email);
   writeStorage(AUTH_KEY, response);
   return response;
 }

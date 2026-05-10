@@ -2,6 +2,7 @@
 
 import type { InputHTMLAttributes, ReactNode } from "react";
 import { useId, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { Eye, EyeOff } from "lucide-react";
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -63,11 +64,20 @@ export function Input({ className = "", error, helperText, icon, label, rightTex
           {helperText}
         </p>
       ) : null}
-      {error ? (
-        <p className="text-[13px] leading-4 text-[#F75A68]" id={errorId}>
-          {error}
-        </p>
-      ) : null}
+      <AnimatePresence initial={false}>
+        {error ? (
+          <motion.p
+            animate={{ opacity: 1, y: 0 }}
+            className="text-[13px] leading-4 text-[#F75A68]"
+            exit={{ opacity: 0, y: -3 }}
+            id={errorId}
+            initial={{ opacity: 0, y: -3 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+          >
+            {error}
+          </motion.p>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }

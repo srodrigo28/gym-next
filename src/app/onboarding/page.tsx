@@ -26,6 +26,7 @@ import { OnboardingLayout } from "@/components/onboarding/OnboardingLayout";
 import { OnboardingOption } from "@/components/onboarding/OnboardingOption";
 import { Input } from "@/components/ui/Input";
 import { bodyMetricsSchema, onboardingSchema } from "@/schemas/onboarding";
+import { notifyValidationMessage } from "@/lib/formFeedback";
 import { getOnboardingDraft, saveOnboardingDraft, saveOnboardingProfile } from "@/lib/onboarding";
 import type { OnboardingProfile, TrainingDaysPerWeek } from "@/types/onboarding";
 
@@ -148,6 +149,7 @@ export default function OnboardingPage() {
 
   async function goNext() {
     if (!canContinue) {
+      notifyValidationMessage(activeStep === 8 ? "Informe peso e altura validos." : "Responda esta etapa para continuar.");
       return;
     }
 

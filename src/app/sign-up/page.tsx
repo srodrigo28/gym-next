@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { signUp } from "@/lib/auth";
+import { notifyAppError, notifyFormErrors } from "@/lib/formFeedback";
 import { signUpSchema } from "@/schemas/auth";
 import type { SignUpPayload } from "@/types/auth";
 
@@ -28,6 +29,7 @@ export default function SignUpPage() {
       await signUp(payload);
       router.replace("/onboarding");
     } catch (error) {
+      notifyAppError(error, "Nao foi possivel criar sua conta.");
       setError("root", {
         message: error instanceof Error ? error.message : "Não foi possível criar sua conta.",
       });
@@ -49,7 +51,7 @@ export default function SignUpPage() {
       <form
         className="relative z-10 flex min-h-dvh flex-col px-10"
         noValidate
-        onSubmit={handleSubmit(handleSignUp)}
+        onSubmit={handleSubmit(handleSignUp, notifyFormErrors)}
         style={{
           paddingBottom: "max(80px, env(safe-area-inset-bottom))",
           paddingTop: "max(128px, env(safe-area-inset-top))",

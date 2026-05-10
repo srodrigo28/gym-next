@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { AppToaster } from "@/components/app/AppToaster";
 import { MobileShell } from "@/components/app/MobileShell";
 import { PwaRegister } from "@/components/app/PwaRegister";
 import "./globals.css";
@@ -46,6 +47,7 @@ export default function RootLayout({
     <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
         <PwaRegister />
+        <AppToaster />
         <MobileShell>{children}</MobileShell>
       </body>
     </html>
