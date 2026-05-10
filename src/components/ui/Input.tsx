@@ -1,0 +1,69 @@
+"use client";
+
+import type { InputHTMLAttributes, ReactNode } from "react";
+import { useId, useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
+
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+  error?: string;
+  helperText?: string;
+  icon?: ReactNode;
+  label?: string;
+  rightText?: string;
+};
+
+export function Input({ className = "", error, helperText, icon, label, rightText, type, ...props }: InputProps) {
+  const id = useId();
+  const [isHidden, setIsHidden] = useState(type === "password");
+  const inputType = type === "password" ? (isHidden ? "password" : "text") : type;
+  const helperId = `${id}-helper`;
+  const errorId = `${id}-error`;
+
+  return (
+    <div className="grid gap-1.5">
+      {label ? (
+        <label className="text-sm font-bold text-white" htmlFor={id}>
+          {label}
+        </label>
+      ) : null}
+      <div
+        className={[
+          "flex h-16 items-center gap-3 rounded-md border bg-[#18181B] px-4 text-white shadow-[#00B37E]/20 transition focus-within:border-[#00B37E] focus-within:shadow-[0_0_0_3px_rgba(0,179,126,0.12)]",
+          error ? "border-[#F75A68]" : "border-transparent",
+          className,
+        ].join(" ")}
+      >
+        {icon ? <div className="text-[#7C7C8A]">{icon}</div> : null}
+        <input
+          aria-describedby={error ? errorId : helperText ? helperId : undefined}
+          aria-invalid={Boolean(error)}
+          className="h-full min-w-0 flex-1 bg-transparent text-base text-white outline-none placeholder:text-[#7C7C8A]"
+          id={id}
+          type={inputType}
+          {...props}
+        />
+        {type === "password" ? (
+          <button
+            aria-label={isHidden ? "Mostrar senha" : "Ocultar senha"}
+            className="flex h-10 w-10 items-center justify-center rounded-md text-[#7C7C8A] active:opacity-75"
+            onClick={() => setIsHidden((current) => !current)}
+            type="button"
+          >
+            {isHidden ? <Eye className="h-5 w-5" /> : <EyeOff className="h-5 w-5" />}
+          </button>
+        ) : null}
+        {rightText ? <span className="text-sm font-bold text-[#C4C4CC]">{rightText}</span> : null}
+      </div>
+      {helperText && !error ? (
+        <p className="text-xs leading-4 text-[#C4C4CC]" id={helperId}>
+          {helperText}
+        </p>
+      ) : null}
+      {error ? (
+        <p className="text-[13px] leading-4 text-[#F75A68]" id={errorId}>
+          {error}
+        </p>
+      ) : null}
+    </div>
+  );
+}
