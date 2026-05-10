@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Download, Share, Smartphone, X } from "lucide-react";
+import { Download, Share, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type BeforeInstallPromptEvent = Event & {
@@ -128,7 +128,7 @@ export function PwaRegister() {
                 <p>Abra esta página no Safari. O iPhone só adiciona PWA à tela inicial pelo Safari.</p>
               ) : isIos ? (
                 <ol className="pwa-install-steps">
-                  <li>Toque em compartilhar <Share className="inline h-3.5 w-3.5" />.</li>
+                  <li>Use o botão Compartilhar do Safari <Share className="inline h-3.5 w-3.5" />.</li>
                   <li>Escolha “Adicionar à Tela de Início”.</li>
                   <li>Toque em “Adicionar”.</li>
                 </ol>
@@ -142,8 +142,9 @@ export function PwaRegister() {
         </div>
 
         {showManualHelp && !installPrompt ? (
-          <div className="pwa-install-hint" aria-hidden>
-            <Smartphone className="h-5 w-5" />
+          <div className="pwa-install-manual-badge" aria-hidden>
+            <Share className="h-4 w-4" />
+            Safari
           </div>
         ) : (
           <button className="pwa-install-action" onClick={handleInstall} type="button">

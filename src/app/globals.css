@@ -252,13 +252,26 @@ button {
   font-weight: 900;
 }
 
-.pwa-install-hint {
+.pwa-install-hint,
+.pwa-install-manual-badge {
   flex: 0 0 auto;
-  height: 40px;
-  width: 40px;
   border-radius: 10px;
   background: rgba(0, 179, 126, 0.12);
   color: #00b37e;
+}
+
+.pwa-install-hint {
+  height: 40px;
+  width: 40px;
+}
+
+.pwa-install-manual-badge {
+  gap: 5px;
+  min-height: 36px;
+  padding-inline: 10px;
+  font-size: 12px;
+  font-weight: 900;
+  pointer-events: none;
 }
 
 @keyframes app-loading-float {
