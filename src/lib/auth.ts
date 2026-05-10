@@ -23,10 +23,10 @@ export async function signIn(payload: SignInPayload) {
   await wait();
 
   if (payload.email === "erro@gymflow.com") {
-    throw new Error("E-mail ou senha invalidos.");
+    throw new Error("E-mail ou senha inválidos.");
   }
 
-  const response = createAuthResponse("Rodrigo Goncalves", payload.email);
+  const response = createAuthResponse("Rodrigo Gonçalves", payload.email);
   writeStorage(AUTH_KEY, response);
   return response;
 }
@@ -35,7 +35,7 @@ export async function signUp(payload: SignUpPayload) {
   await wait();
 
   if (payload.email === "erro@gymflow.com") {
-    throw new Error("Este e-mail ja esta em uso.");
+    throw new Error("Este e-mail já está em uso.");
   }
 
   const response = createAuthResponse(payload.name, payload.email);

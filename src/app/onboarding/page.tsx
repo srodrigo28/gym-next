@@ -36,32 +36,32 @@ const professionalPurposeStepIndex = 20;
 type IllustrationName = "welcome" | "sex" | "work" | "training" | "metrics" | "sleep" | "history" | "nutrition" | "photos" | "summary";
 
 const steps: { description: string; illustration: IllustrationName; title: string }[] = [
-  { description: "Algumas respostas rapidas para personalizar treinos, rotina e recomendacoes.", illustration: "welcome", title: "Vamos ajustar sua jornada" },
-  { description: "Essa informacao ajuda nas metricas e na personalizacao inicial.", illustration: "sex", title: "Como voce prefere informar seu perfil?" },
-  { description: "Sua rotina muda bastante o tipo de treino que faz sentido para voce.", illustration: "work", title: "Como e seu trabalho no dia a dia?" },
-  { description: "Relacionamento e rotina social tambem influencia consistencia, energia e tempo disponivel.", illustration: "work", title: "Como esta sua vida afetiva hoje?" },
-  { description: "Essa resposta ajuda a ajustar metas e comunicacao sem criar pressao desnecessaria.", illustration: "work", title: "Voce sente dificuldade em se relacionar?" },
+  { description: "Algumas respostas rápidas para personalizar treinos, rotina e recomendações.", illustration: "welcome", title: "Vamos ajustar sua jornada" },
+  { description: "Essa informação ajuda nas métricas e na personalização inicial.", illustration: "sex", title: "Como você prefere informar seu perfil?" },
+  { description: "Sua rotina muda bastante o tipo de treino que faz sentido para você.", illustration: "work", title: "Como é seu trabalho no dia a dia?" },
+  { description: "Relacionamento e rotina social também influenciam consistência, energia e tempo disponível.", illustration: "work", title: "Como está sua vida afetiva hoje?" },
+  { description: "Essa resposta ajuda a ajustar metas e comunicação sem criar pressão desnecessária.", illustration: "work", title: "Você sente dificuldade em se relacionar?" },
   { description: "Humor e energia emocional mudam o jeito ideal de manter uma rotina de treino.", illustration: "sleep", title: "Como anda seu humor?" },
-  { description: "Vamos montar uma rotina realista, daquelas que cabem na vida de verdade.", illustration: "training", title: "Qual rotina de treinos voce quer seguir?" },
-  { description: "Escolher um periodo ajuda a encaixar o treino na sua rotina.", illustration: "training", title: "Qual periodo combina melhor com voce?" },
-  { description: "Esses dados ajudam a acompanhar evolucao e ajustar metas futuras.", illustration: "metrics", title: "Peso e altura atuais" },
-  { description: "Sono e recuperacao contam muito. Musculo tambem gosta de travesseiro.", illustration: "sleep", title: "Como anda seu sono?" },
-  { description: "Acordar bem ajuda a entender recuperacao, energia e ritmo de treino.", illustration: "sleep", title: "Voce costuma acordar descansado?" },
-  { description: "Alguns habitos pesam bastante na recuperacao e no progresso ao longo das semanas.", illustration: "nutrition", title: "Voce fuma atualmente?" },
-  { description: "Essa informacao ajuda a calibrar metas e recomendacoes sem julgamento.", illustration: "nutrition", title: "Voce consome cerveja ou bebida alcoolica?" },
-  { description: "Vamos entender bebidas do dia a dia sem exagerar nas perguntas.", illustration: "nutrition", title: "Voce costuma beber refrigerante?" },
-  { description: "So aparece para quem informou que bebe refrigerante.", illustration: "nutrition", title: "Com que frequencia voce bebe refrigerante?" },
-  { description: "Essa medida ajuda a estimar melhor o consumo, mesmo que seja aproximado.", illustration: "nutrition", title: "Quanto refrigerante voce toma por vez?" },
-  { description: "Monitorar ou nao monitorar alimentacao muda o tipo de dica que faz sentido.", illustration: "nutrition", title: "Voce acompanha sua alimentacao?" },
-  { description: "Assim evitamos jogar voce no modo chefao logo no primeiro treino.", illustration: "history", title: "Voce ja treinou antes?" },
-  { description: "Isso ajuda a ajustar progressao, carga e nivel de explicacao.", illustration: "history", title: "Por quanto tempo voce treinou?" },
-  { description: "Treino profissional pede outra intensidade de planejamento e acompanhamento.", illustration: "training", title: "Voce treina com finalidade profissional?" },
-  { description: "A finalidade ajuda a definir prioridade, volume e tipo de evolucao.", illustration: "training", title: "Qual e o foco profissional do treino?" },
-  { description: "Sem terrorismo alimentar. A ideia e dar dicas simples e uteis.", illustration: "nutrition", title: "Voce quer dicas de alimentacao?" },
-  { description: "Pequenos lembretes podem ajudar a manter consistencia sem pressao.", illustration: "nutrition", title: "Voce quer conselhos diarios?" },
-  { description: "Fotos sao opcionais e servem para acompanhar habitos e evolucao.", illustration: "photos", title: "Quer registrar fotos das refeicoes?" },
-  { description: "As fotos de evolucao ajudam a enxergar progresso alem da balanca.", illustration: "photos", title: "Quer registrar fotos de evolucao?" },
-  { description: "Confira suas respostas antes de finalizar a configuracao.", illustration: "summary", title: "Resumo da sua jornada" },
+  { description: "Vamos montar uma rotina realista, daquelas que cabem na vida de verdade.", illustration: "training", title: "Qual rotina de treinos você quer seguir?" },
+  { description: "Escolher um período ajuda a encaixar o treino na sua rotina.", illustration: "training", title: "Qual período combina melhor com você?" },
+  { description: "Esses dados ajudam a acompanhar evolução e ajustar metas futuras.", illustration: "metrics", title: "Peso e altura atuais" },
+  { description: "Sono e recuperação contam muito. Músculo também gosta de travesseiro.", illustration: "sleep", title: "Como anda seu sono?" },
+  { description: "Acordar bem ajuda a entender recuperação, energia e ritmo de treino.", illustration: "sleep", title: "Você costuma acordar descansado?" },
+  { description: "Alguns hábitos pesam bastante na recuperação e no progresso ao longo das semanas.", illustration: "nutrition", title: "Você fuma atualmente?" },
+  { description: "Essa informação ajuda a calibrar metas e recomendações sem julgamento.", illustration: "nutrition", title: "Você consome cerveja ou bebida alcoólica?" },
+  { description: "Vamos entender bebidas do dia a dia sem exagerar nas perguntas.", illustration: "nutrition", title: "Você costuma beber refrigerante?" },
+  { description: "Só aparece para quem informou que bebe refrigerante.", illustration: "nutrition", title: "Com que frequência você bebe refrigerante?" },
+  { description: "Essa medida ajuda a estimar melhor o consumo, mesmo que seja aproximado.", illustration: "nutrition", title: "Quanto refrigerante você toma por vez?" },
+  { description: "Monitorar ou não monitorar alimentação muda o tipo de dica que faz sentido.", illustration: "nutrition", title: "Você acompanha sua alimentação?" },
+  { description: "Assim evitamos jogar você no modo chefão logo no primeiro treino.", illustration: "history", title: "Você já treinou antes?" },
+  { description: "Isso ajuda a ajustar progressão, carga e nível de explicação.", illustration: "history", title: "Por quanto tempo você treinou?" },
+  { description: "Treino profissional pede outra intensidade de planejamento e acompanhamento.", illustration: "training", title: "Você treina com finalidade profissional?" },
+  { description: "A finalidade ajuda a definir prioridade, volume e tipo de evolução.", illustration: "training", title: "Qual é o foco profissional do treino?" },
+  { description: "Sem terrorismo alimentar. A ideia é dar dicas simples e úteis.", illustration: "nutrition", title: "Você quer dicas de alimentação?" },
+  { description: "Pequenos lembretes podem ajudar a manter consistência sem pressão.", illustration: "nutrition", title: "Você quer conselhos diários?" },
+  { description: "Fotos são opcionais e servem para acompanhar hábitos e evolução.", illustration: "photos", title: "Quer registrar fotos das refeições?" },
+  { description: "As fotos de evolução ajudam a enxergar progresso além da balança.", illustration: "photos", title: "Quer registrar fotos de evolução?" },
+  { description: "Confira suas respostas antes de finalizar a configuração.", illustration: "summary", title: "Resumo da sua jornada" },
 ];
 
 const labels: Record<string, string> = {
@@ -80,30 +80,30 @@ const labels: Record<string, string> = {
   yes: "sim",
   moderate: "talvez no futuro",
   maybe_later: "talvez depois",
-  no: "nao",
+  no: "não",
   stopped: "parou de fumar",
   rarely: "raramente",
   weekly_1_2: "1 a 2 vezes por semana",
   weekly_3_plus: "3+ vezes por semana",
   weekly_3_5: "3 a 5 vezes por semana",
   daily: "todos os dias",
-  up_to_200: "ate 200 ml",
+  up_to_200: "até 200 ml",
   over_600: "mais de 600 ml",
   sometimes: "as vezes",
   single: "solteiro(a)",
   married: "casado(a)",
   serious_relationship: "relacionamento serio",
   other: "outro",
-  often: "com frequencia",
-  stable: "estavel",
+  often: "com frequência",
+  stable: "estável",
   motivated: "animado(a)",
   anxious: "ansioso(a)",
   irritated: "irritado(a)",
   discouraged: "desanimado(a)",
   competition: "competicao esportiva",
-  bodybuilding: "estetica ou fisiculturismo",
+  bodybuilding: "estética ou fisiculturismo",
   professional_performance: "performance profissional",
-  physical_test: "teste fisico ou concurso",
+  physical_test: "teste físico ou concurso",
 };
 
 export default function OnboardingPage() {
@@ -161,7 +161,7 @@ export default function OnboardingPage() {
           canGoBack={currentStepPosition > 0}
           canGoNext={canContinue}
           loading={isSaving}
-          nextLabel={currentStepNumber === totalSteps ? "Finalizar" : activeStep === 0 ? "Comecar" : "Continuar"}
+          nextLabel={currentStepNumber === totalSteps ? "Finalizar" : activeStep === 0 ? "Começar" : "Continuar"}
           onBack={goBack}
           onNext={goNext}
         />
@@ -176,42 +176,42 @@ export default function OnboardingPage() {
 }
 
 function StepContent({ profile, step, updateProfile }: { profile: OnboardingProfile; step: number; updateProfile: (payload: Partial<OnboardingProfile>) => void }) {
-  if (step === 0) return <p className="text-base leading-6 text-[#C4C4CC]">Prometemos perguntas objetivas. Nada de entrevista de emprego com halter na mao.</p>;
+  if (step === 0) return <p className="text-base leading-6 text-[#C4C4CC]">Prometemos perguntas objetivas. Nada de entrevista de emprego com halter na mão.</p>;
   if (step === 1) return (
     <>
       <OnboardingOption icon={<User size={22} />} label="Masculino" selected={profile.sex === "male"} onPress={() => updateProfile({ sex: "male" })} />
       <OnboardingOption icon={<User size={22} />} label="Feminino" selected={profile.sex === "female"} onPress={() => updateProfile({ sex: "female" })} />
-      <OnboardingOption icon={<Shield size={22} />} label="Prefiro nao informar" selected={profile.sex === "prefer_not_to_say"} onPress={() => updateProfile({ sex: "prefer_not_to_say" })} />
+      <OnboardingOption icon={<Shield size={22} />} label="Prefiro não informar" selected={profile.sex === "prefer_not_to_say"} onPress={() => updateProfile({ sex: "prefer_not_to_say" })} />
     </>
   );
   if (step === 2) return (
     <>
       <OnboardingOption icon={<Briefcase size={22} />} label="Passo a maior parte do dia sentado" selected={profile.workRoutine === "mostly_sitting"} onPress={() => updateProfile({ workRoutine: "mostly_sitting" })} />
-      <OnboardingOption icon={<Activity size={22} />} label="Fico bastante tempo em pe" selected={profile.workRoutine === "mostly_standing"} onPress={() => updateProfile({ workRoutine: "mostly_standing" })} />
-      <OnboardingOption icon={<Activity size={22} />} label="Tenho trabalho fisico moderado" selected={profile.workRoutine === "moderate_physical"} onPress={() => updateProfile({ workRoutine: "moderate_physical" })} />
-      <OnboardingOption icon={<Dumbbell size={22} />} label="Tenho trabalho fisico intenso" selected={profile.workRoutine === "intense_physical"} onPress={() => updateProfile({ workRoutine: "intense_physical" })} />
+      <OnboardingOption icon={<Activity size={22} />} label="Fico bastante tempo em pé" selected={profile.workRoutine === "mostly_standing"} onPress={() => updateProfile({ workRoutine: "mostly_standing" })} />
+      <OnboardingOption icon={<Activity size={22} />} label="Tenho trabalho físico moderado" selected={profile.workRoutine === "moderate_physical"} onPress={() => updateProfile({ workRoutine: "moderate_physical" })} />
+      <OnboardingOption icon={<Dumbbell size={22} />} label="Tenho trabalho físico intenso" selected={profile.workRoutine === "intense_physical"} onPress={() => updateProfile({ workRoutine: "intense_physical" })} />
       <OnboardingOption icon={<Activity size={22} />} label="Minha rotina varia muito" selected={profile.workRoutine === "varies"} onPress={() => updateProfile({ workRoutine: "varies" })} />
-      <Input icon={<Briefcase className="h-5 w-5" />} label="Profissao ou area" onChange={(event) => updateProfile({ profession: event.target.value })} placeholder="Ex: desenvolvedor, motorista, professora..." value={profile.profession ?? ""} />
+      <Input icon={<Briefcase className="h-5 w-5" />} label="Profissão ou área" onChange={(event) => updateProfile({ profession: event.target.value })} placeholder="Ex: desenvolvedor, motorista, professora..." value={profile.profession ?? ""} />
     </>
   );
   if (step === 3) return (
     <>
       <OnboardingOption icon={<User size={22} />} label="Solteiro(a)" selected={profile.relationshipStatus === "single"} onPress={() => updateProfile({ relationshipStatus: "single" })} />
-      <OnboardingOption icon={<Heart size={22} />} label="Em relacionamento serio" selected={profile.relationshipStatus === "serious_relationship"} onPress={() => updateProfile({ relationshipStatus: "serious_relationship" })} />
+      <OnboardingOption icon={<Heart size={22} />} label="Em relacionamento sério" selected={profile.relationshipStatus === "serious_relationship"} onPress={() => updateProfile({ relationshipStatus: "serious_relationship" })} />
       <OnboardingOption icon={<Heart size={22} />} label="Casado(a)" selected={profile.relationshipStatus === "married"} onPress={() => updateProfile({ relationshipStatus: "married" })} />
       <OnboardingOption icon={<Activity size={22} />} label="Outro" selected={profile.relationshipStatus === "other"} onPress={() => updateProfile({ relationshipStatus: "other" })} />
     </>
   );
   if (step === 4) return (
     <>
-      <OnboardingOption icon={<Smile size={22} />} label="Nao tenho dificuldade" selected={profile.hasRelationshipDifficulty === "no"} onPress={() => updateProfile({ hasRelationshipDifficulty: "no" })} />
-      <OnboardingOption icon={<Activity size={22} />} label="As vezes sinto dificuldade" selected={profile.hasRelationshipDifficulty === "sometimes"} onPress={() => updateProfile({ hasRelationshipDifficulty: "sometimes" })} />
-      <OnboardingOption icon={<Activity size={22} />} label="Tenho dificuldade com frequencia" selected={profile.hasRelationshipDifficulty === "often"} onPress={() => updateProfile({ hasRelationshipDifficulty: "often" })} />
+      <OnboardingOption icon={<Smile size={22} />} label="Não tenho dificuldade" selected={profile.hasRelationshipDifficulty === "no"} onPress={() => updateProfile({ hasRelationshipDifficulty: "no" })} />
+      <OnboardingOption icon={<Activity size={22} />} label="Às vezes sinto dificuldade" selected={profile.hasRelationshipDifficulty === "sometimes"} onPress={() => updateProfile({ hasRelationshipDifficulty: "sometimes" })} />
+      <OnboardingOption icon={<Activity size={22} />} label="Tenho dificuldade com frequência" selected={profile.hasRelationshipDifficulty === "often"} onPress={() => updateProfile({ hasRelationshipDifficulty: "often" })} />
     </>
   );
   if (step === 5) return (
     <>
-      <OnboardingOption icon={<CheckCircle size={22} />} label="Estavel" selected={profile.moodPattern === "stable"} onPress={() => updateProfile({ moodPattern: "stable" })} />
+      <OnboardingOption icon={<CheckCircle size={22} />} label="Estável" selected={profile.moodPattern === "stable"} onPress={() => updateProfile({ moodPattern: "stable" })} />
       <OnboardingOption icon={<Activity size={22} />} label="Animado(a)" selected={profile.moodPattern === "motivated"} onPress={() => updateProfile({ moodPattern: "motivated" })} />
       <OnboardingOption icon={<Activity size={22} />} label="Ansioso(a)" selected={profile.moodPattern === "anxious"} onPress={() => updateProfile({ moodPattern: "anxious" })} />
       <OnboardingOption icon={<Flame size={22} />} label="Irritado(a)" selected={profile.moodPattern === "irritated"} onPress={() => updateProfile({ moodPattern: "irritated" })} />
@@ -229,7 +229,7 @@ function StepContent({ profile, step, updateProfile }: { profile: OnboardingProf
         </div>
       </QuestionSection>
       <QuestionSection title="Pergunta 2: quanto tempo por treino?">
-        <OnboardingOption icon={<Calendar size={22} />} label="Ate 30 minutos" selected={profile.trainingDuration === "up_to_30"} onPress={() => updateProfile({ trainingDuration: "up_to_30" })} />
+        <OnboardingOption icon={<Calendar size={22} />} label="Até 30 minutos" selected={profile.trainingDuration === "up_to_30"} onPress={() => updateProfile({ trainingDuration: "up_to_30" })} />
         <OnboardingOption icon={<Calendar size={22} />} label="30 a 45 minutos" selected={profile.trainingDuration === "30_to_45"} onPress={() => updateProfile({ trainingDuration: "30_to_45" })} />
         <OnboardingOption icon={<Calendar size={22} />} label="45 a 60 minutos" selected={profile.trainingDuration === "45_to_60"} onPress={() => updateProfile({ trainingDuration: "45_to_60" })} />
         <OnboardingOption icon={<Calendar size={22} />} label="Mais de 60 minutos" selected={profile.trainingDuration === "over_60"} onPress={() => updateProfile({ trainingDuration: "over_60" })} />
@@ -238,7 +238,7 @@ function StepContent({ profile, step, updateProfile }: { profile: OnboardingProf
   );
   if (step === 7) return (
     <>
-      <OnboardingOption icon={<Activity size={22} />} label="Manha" selected={profile.preferredTrainingPeriod === "morning"} onPress={() => updateProfile({ preferredTrainingPeriod: "morning" })} />
+      <OnboardingOption icon={<Activity size={22} />} label="Manhã" selected={profile.preferredTrainingPeriod === "morning"} onPress={() => updateProfile({ preferredTrainingPeriod: "morning" })} />
       <OnboardingOption icon={<Activity size={22} />} label="Tarde" selected={profile.preferredTrainingPeriod === "afternoon"} onPress={() => updateProfile({ preferredTrainingPeriod: "afternoon" })} />
       <OnboardingOption icon={<Moon size={22} />} label="Noite" selected={profile.preferredTrainingPeriod === "night"} onPress={() => updateProfile({ preferredTrainingPeriod: "night" })} />
       <OnboardingOption icon={<Activity size={22} />} label="Varia conforme o dia" selected={profile.preferredTrainingPeriod === "varies"} onPress={() => updateProfile({ preferredTrainingPeriod: "varies" })} />
@@ -247,7 +247,7 @@ function StepContent({ profile, step, updateProfile }: { profile: OnboardingProf
   if (step === 8) return (
     <>
       <NumberInput helperText="Use seu peso atual, mesmo que seja aproximado." label="Peso atual" onChange={(weightKg) => updateProfile({ weightKg })} placeholder="Ex: 83" rightText="kg" value={profile.weightKg} />
-      <NumberInput helperText="Informe sua altura em centimetros." label="Altura" onChange={(heightCm) => updateProfile({ heightCm })} placeholder="Ex: 170" rightText="cm" value={profile.heightCm} />
+      <NumberInput helperText="Informe sua altura em centímetros." label="Altura" onChange={(heightCm) => updateProfile({ heightCm })} placeholder="Ex: 170" rightText="cm" value={profile.heightCm} />
     </>
   );
   if (step === 9) return (
@@ -269,13 +269,13 @@ function StepContent({ profile, step, updateProfile }: { profile: OnboardingProf
   if (step === 11) return (
     <>
       <OnboardingOption icon={<Flame size={22} />} label="Sim" selected={profile.smokes === "yes"} onPress={() => updateProfile({ smokes: "yes" })} />
-      <OnboardingOption icon={<CheckCircle size={22} />} label="Nao" selected={profile.smokes === "no"} onPress={() => updateProfile({ smokes: "no" })} />
+      <OnboardingOption icon={<CheckCircle size={22} />} label="Não" selected={profile.smokes === "no"} onPress={() => updateProfile({ smokes: "no" })} />
       <OnboardingOption icon={<Apple size={22} />} label="Parei de fumar" selected={profile.smokes === "stopped"} onPress={() => updateProfile({ smokes: "stopped" })} />
     </>
   );
   if (step === 12) return (
     <>
-      <OnboardingOption icon={<CheckCircle size={22} />} label="Nao consumo" selected={profile.beerConsumption === "no"} onPress={() => updateProfile({ beerConsumption: "no" })} />
+      <OnboardingOption icon={<CheckCircle size={22} />} label="Não consumo" selected={profile.beerConsumption === "no"} onPress={() => updateProfile({ beerConsumption: "no" })} />
       <OnboardingOption icon={<Calendar size={22} />} label="Raramente" selected={profile.beerConsumption === "rarely"} onPress={() => updateProfile({ beerConsumption: "rarely" })} />
       <OnboardingOption icon={<Calendar size={22} />} label="1 a 2 vezes por semana" selected={profile.beerConsumption === "weekly_1_2"} onPress={() => updateProfile({ beerConsumption: "weekly_1_2" })} />
       <OnboardingOption icon={<BarChart3 size={22} />} label="3 ou mais vezes por semana" selected={profile.beerConsumption === "weekly_3_plus"} onPress={() => updateProfile({ beerConsumption: "weekly_3_plus" })} />
@@ -284,7 +284,7 @@ function StepContent({ profile, step, updateProfile }: { profile: OnboardingProf
   if (step === 13) return (
     <>
       <OnboardingOption icon={<CheckCircle size={22} />} label="Sim" selected={profile.drinksSoda === "yes"} onPress={() => updateProfile({ drinksSoda: "yes" })} />
-      <OnboardingOption icon={<CheckCircle size={22} />} label="Nao" selected={profile.drinksSoda === "no"} onPress={() => updateProfile({ drinksSoda: "no", sodaAmount: undefined, sodaFrequency: undefined })} />
+      <OnboardingOption icon={<CheckCircle size={22} />} label="Não" selected={profile.drinksSoda === "no"} onPress={() => updateProfile({ drinksSoda: "no", sodaAmount: undefined, sodaFrequency: undefined })} />
     </>
   );
   if (step === 14) return (
@@ -297,7 +297,7 @@ function StepContent({ profile, step, updateProfile }: { profile: OnboardingProf
   );
   if (step === 15) return (
     <>
-      <OnboardingOption icon={<Activity size={22} />} label="Ate 200 ml" selected={profile.sodaAmount === "up_to_200"} onPress={() => updateProfile({ sodaAmount: "up_to_200" })} />
+      <OnboardingOption icon={<Activity size={22} />} label="Até 200 ml" selected={profile.sodaAmount === "up_to_200"} onPress={() => updateProfile({ sodaAmount: "up_to_200" })} />
       <OnboardingOption icon={<Activity size={22} />} label="200 a 350 ml" selected={profile.sodaAmount === "200_to_350"} onPress={() => updateProfile({ sodaAmount: "200_to_350" })} />
       <OnboardingOption icon={<Activity size={22} />} label="350 a 600 ml" selected={profile.sodaAmount === "350_to_600"} onPress={() => updateProfile({ sodaAmount: "350_to_600" })} />
       <OnboardingOption icon={<Activity size={22} />} label="Mais de 600 ml" selected={profile.sodaAmount === "over_600"} onPress={() => updateProfile({ sodaAmount: "over_600" })} />
@@ -305,18 +305,18 @@ function StepContent({ profile, step, updateProfile }: { profile: OnboardingProf
   );
   if (step === 16) return (
     <>
-      <OnboardingOption icon={<BarChart3 size={22} />} label="Sim, acompanho com frequencia" selected={profile.monitorsFood === "yes"} onPress={() => updateProfile({ monitorsFood: "yes" })} />
-      <OnboardingOption icon={<Activity size={22} />} label="As vezes" selected={profile.monitorsFood === "sometimes"} onPress={() => updateProfile({ monitorsFood: "sometimes" })} />
-      <OnboardingOption icon={<CheckCircle size={22} />} label="Nao monitoro" selected={profile.monitorsFood === "no"} onPress={() => updateProfile({ monitorsFood: "no" })} />
+      <OnboardingOption icon={<BarChart3 size={22} />} label="Sim, acompanho com frequência" selected={profile.monitorsFood === "yes"} onPress={() => updateProfile({ monitorsFood: "yes" })} />
+      <OnboardingOption icon={<Activity size={22} />} label="Às vezes" selected={profile.monitorsFood === "sometimes"} onPress={() => updateProfile({ monitorsFood: "sometimes" })} />
+      <OnboardingOption icon={<CheckCircle size={22} />} label="Não monitoro" selected={profile.monitorsFood === "no"} onPress={() => updateProfile({ monitorsFood: "no" })} />
     </>
   );
   if (step === 17) return (
     <>
       <OnboardingOption icon={<Activity size={22} />} label="Nunca treinei" selected={profile.gymExperience === "never"} onPress={() => updateProfile({ gymExperience: "never", previousTrainingTime: undefined })} />
-      <OnboardingOption icon={<Activity size={22} />} label="Ja treinei por pouco tempo" selected={profile.gymExperience === "short_time"} onPress={() => updateProfile({ gymExperience: "short_time" })} />
+      <OnboardingOption icon={<Activity size={22} />} label="Já treinei por pouco tempo" selected={profile.gymExperience === "short_time"} onPress={() => updateProfile({ gymExperience: "short_time" })} />
       <OnboardingOption icon={<Dumbbell size={22} />} label="Treinei por alguns meses" selected={profile.gymExperience === "few_months"} onPress={() => updateProfile({ gymExperience: "few_months" })} />
       <OnboardingOption icon={<Dumbbell size={22} />} label="Treinei por mais de 1 ano" selected={profile.gymExperience === "more_than_1_year"} onPress={() => updateProfile({ gymExperience: "more_than_1_year" })} />
-      <OnboardingOption icon={<Dumbbell size={22} />} label="Ja treino atualmente" selected={profile.gymExperience === "currently_training"} onPress={() => updateProfile({ gymExperience: "currently_training" })} />
+      <OnboardingOption icon={<Dumbbell size={22} />} label="Já treino atualmente" selected={profile.gymExperience === "currently_training"} onPress={() => updateProfile({ gymExperience: "currently_training" })} />
     </>
   );
   if (step === 18) return (
@@ -332,44 +332,44 @@ function StepContent({ profile, step, updateProfile }: { profile: OnboardingProf
     <>
       <OnboardingOption icon={<Trophy size={22} />} label="Sim" selected={profile.trainsProfessionally === "yes"} onPress={() => updateProfile({ trainsProfessionally: "yes" })} />
       <OnboardingOption icon={<BarChart3 size={22} />} label="Pretendo no futuro" selected={profile.trainsProfessionally === "moderate"} onPress={() => updateProfile({ trainsProfessionally: "moderate", professionalTrainingPurpose: undefined })} />
-      <OnboardingOption icon={<CheckCircle size={22} />} label="Nao" selected={profile.trainsProfessionally === "no"} onPress={() => updateProfile({ trainsProfessionally: "no", professionalTrainingPurpose: undefined })} />
+      <OnboardingOption icon={<CheckCircle size={22} />} label="Não" selected={profile.trainsProfessionally === "no"} onPress={() => updateProfile({ trainsProfessionally: "no", professionalTrainingPurpose: undefined })} />
     </>
   );
   if (step === 20) return (
     <>
-      <OnboardingOption icon={<Trophy size={22} />} label="Competicao esportiva" selected={profile.professionalTrainingPurpose === "competition"} onPress={() => updateProfile({ professionalTrainingPurpose: "competition" })} />
-      <OnboardingOption icon={<Dumbbell size={22} />} label="Estetica ou fisiculturismo" selected={profile.professionalTrainingPurpose === "bodybuilding"} onPress={() => updateProfile({ professionalTrainingPurpose: "bodybuilding" })} />
+      <OnboardingOption icon={<Trophy size={22} />} label="Competição esportiva" selected={profile.professionalTrainingPurpose === "competition"} onPress={() => updateProfile({ professionalTrainingPurpose: "competition" })} />
+      <OnboardingOption icon={<Dumbbell size={22} />} label="Estética ou fisiculturismo" selected={profile.professionalTrainingPurpose === "bodybuilding"} onPress={() => updateProfile({ professionalTrainingPurpose: "bodybuilding" })} />
       <OnboardingOption icon={<BarChart3 size={22} />} label="Performance profissional" selected={profile.professionalTrainingPurpose === "professional_performance"} onPress={() => updateProfile({ professionalTrainingPurpose: "professional_performance" })} />
-      <OnboardingOption icon={<Activity size={22} />} label="Teste fisico ou concurso" selected={profile.professionalTrainingPurpose === "physical_test"} onPress={() => updateProfile({ professionalTrainingPurpose: "physical_test" })} />
+      <OnboardingOption icon={<Activity size={22} />} label="Teste físico ou concurso" selected={profile.professionalTrainingPurpose === "physical_test"} onPress={() => updateProfile({ professionalTrainingPurpose: "physical_test" })} />
       <OnboardingOption icon={<Activity size={22} />} label="Outro" selected={profile.professionalTrainingPurpose === "other"} onPress={() => updateProfile({ professionalTrainingPurpose: "other" })} />
     </>
   );
   if (step === 21) return (
     <>
-      <OnboardingOption icon={<Apple size={22} />} label="Sim, quero dicas de alimentacao" selected={profile.wantsNutritionTips === "yes"} onPress={() => updateProfile({ wantsNutritionTips: "yes" })} />
+      <OnboardingOption icon={<Apple size={22} />} label="Sim, quero dicas de alimentação" selected={profile.wantsNutritionTips === "yes"} onPress={() => updateProfile({ wantsNutritionTips: "yes" })} />
       <OnboardingOption icon={<Activity size={22} />} label="Quero de forma moderada" selected={profile.wantsNutritionTips === "moderate"} onPress={() => updateProfile({ wantsNutritionTips: "moderate" })} />
-      <OnboardingOption icon={<CheckCircle size={22} />} label="Nao quero agora" selected={profile.wantsNutritionTips === "no"} onPress={() => updateProfile({ wantsNutritionTips: "no" })} />
+      <OnboardingOption icon={<CheckCircle size={22} />} label="Não quero agora" selected={profile.wantsNutritionTips === "no"} onPress={() => updateProfile({ wantsNutritionTips: "no" })} />
     </>
   );
   if (step === 22) return (
     <>
       <OnboardingOption icon={<Activity size={22} />} label="Sim, quero receber" selected={profile.wantsDailyAdvice === "yes"} onPress={() => updateProfile({ wantsDailyAdvice: "yes" })} />
       <OnboardingOption icon={<Activity size={22} />} label="Apenas quando fizer sentido" selected={profile.wantsDailyAdvice === "moderate"} onPress={() => updateProfile({ wantsDailyAdvice: "moderate" })} />
-      <OnboardingOption icon={<CheckCircle size={22} />} label="Nao quero agora" selected={profile.wantsDailyAdvice === "no"} onPress={() => updateProfile({ wantsDailyAdvice: "no" })} />
+      <OnboardingOption icon={<CheckCircle size={22} />} label="Não quero agora" selected={profile.wantsDailyAdvice === "no"} onPress={() => updateProfile({ wantsDailyAdvice: "no" })} />
     </>
   );
   if (step === 23) return (
     <>
       <OnboardingOption icon={<Apple size={22} />} label="Sim, quero registrar" selected={profile.wantsMealPhotoDiary === "yes"} onPress={() => updateProfile({ wantsMealPhotoDiary: "yes" })} />
       <OnboardingOption icon={<Activity size={22} />} label="Talvez depois" selected={profile.wantsMealPhotoDiary === "maybe_later"} onPress={() => updateProfile({ wantsMealPhotoDiary: "maybe_later" })} />
-      <OnboardingOption icon={<Shield size={22} />} label="Nao quero" selected={profile.wantsMealPhotoDiary === "no"} onPress={() => updateProfile({ wantsMealPhotoDiary: "no" })} />
+      <OnboardingOption icon={<Shield size={22} />} label="Não quero" selected={profile.wantsMealPhotoDiary === "no"} onPress={() => updateProfile({ wantsMealPhotoDiary: "no" })} />
     </>
   );
   if (step === 24) return (
     <>
       <OnboardingOption icon={<Camera size={22} />} label="Sim, quero acompanhar" selected={profile.wantsProgressPhotos === "yes"} onPress={() => updateProfile({ wantsProgressPhotos: "yes" })} />
       <OnboardingOption icon={<Activity size={22} />} label="Talvez depois" selected={profile.wantsProgressPhotos === "maybe_later"} onPress={() => updateProfile({ wantsProgressPhotos: "maybe_later" })} />
-      <OnboardingOption icon={<Shield size={22} />} label="Nao quero" selected={profile.wantsProgressPhotos === "no"} onPress={() => updateProfile({ wantsProgressPhotos: "no" })} />
+      <OnboardingOption icon={<Shield size={22} />} label="Não quero" selected={profile.wantsProgressPhotos === "no"} onPress={() => updateProfile({ wantsProgressPhotos: "no" })} />
     </>
   );
   return <SummaryStep profile={profile} />;
@@ -447,9 +447,9 @@ function SummaryRow({ label, value }: { label: string; value: string }) {
 }
 
 const journeyScaleLevels = [
-  { description: "Comecar com seguranca", label: "Inicio", value: "start" },
+  { description: "Começar com segurança", label: "Início", value: "start" },
   { description: "Manter rotina", label: "Constancia", value: "consistency" },
-  { description: "Evoluir medidas e forca", label: "Evolucao", value: "evolution" },
+  { description: "Evoluir medidas e força", label: "Evolução", value: "evolution" },
   { description: "Treinar com alta exigencia", label: "Performance", value: "performance" },
 ] as const;
 
@@ -460,7 +460,7 @@ function JourneyScale({ currentLevel, onTargetChange, targetLevel }: { currentLe
   return (
     <div className="grid gap-4 rounded-lg border border-[#29292E] bg-[#202024] p-4">
       <div className="text-center">
-        <h2 className="text-base font-black text-white">Sua escala de evolucao</h2>
+        <h2 className="text-base font-black text-white">Sua escala de evolução</h2>
         <p className="text-sm text-[#C4C4CC]">Toque para escolher onde quer chegar.</p>
       </div>
       <div className="grid grid-cols-4 gap-2">
@@ -543,8 +543,8 @@ function getCurrentJourneyLevel(profile: OnboardingProfile) {
 }
 
 function getBmiResult(bmi: number) {
-  if (bmi < 18.5) return { color: "#F5B041", description: "Seu corpo pode precisar de mais atencao com energia, forca e alimentacao.", scaleWidth: "28%", title: "Atencao ao ganho saudavel" };
-  if (bmi < 25) return { color: "#00B37E", description: "Boa base inicial. Agora o foco e consistencia, evolucao e qualidade de treino.", scaleWidth: "55%", title: "Faixa considerada adequada" };
-  if (bmi < 30) return { color: "#F5B041", description: "Vale acompanhar evolucao com calma e usar treino, sono e rotina a seu favor.", scaleWidth: "74%", title: "Ponto de atencao" };
-  return { color: "#F75A68", description: "Vamos avancar com cuidado, metas realistas e acompanhamento consistente.", scaleWidth: "92%", title: "Atencao redobrada" };
+  if (bmi < 18.5) return { color: "#F5B041", description: "Seu corpo pode precisar de mais atenção com energia, força e alimentação.", scaleWidth: "28%", title: "Atenção ao ganho saudável" };
+  if (bmi < 25) return { color: "#00B37E", description: "Boa base inicial. Agora o foco é consistência, evolução e qualidade de treino.", scaleWidth: "55%", title: "Faixa considerada adequada" };
+  if (bmi < 30) return { color: "#F5B041", description: "Vale acompanhar evolução com calma e usar treino, sono e rotina a seu favor.", scaleWidth: "74%", title: "Ponto de atenção" };
+  return { color: "#F75A68", description: "Vamos avançar com cuidado, metas realistas e acompanhamento consistente.", scaleWidth: "92%", title: "Atenção redobrada" };
 }

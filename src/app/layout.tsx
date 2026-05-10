@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Ignite Gym",
-  description: "Treinos, rotina e evolucao em uma experiencia mobile.",
+  description: "Treinos, rotina e evolução em uma experiência mobile.",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,

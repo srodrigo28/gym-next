@@ -31,7 +31,7 @@ export default function SignUpPage() {
       router.replace("/onboarding");
     } catch (error) {
       setError("root", {
-        message: error instanceof Error ? error.message : "Nao foi possivel criar sua conta.",
+        message: error instanceof Error ? error.message : "Não foi possível criar sua conta.",
       });
     }
   }

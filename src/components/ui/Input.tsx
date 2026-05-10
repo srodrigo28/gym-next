@@ -37,7 +37,7 @@ export function Input({ className = "", error, helperText, icon, label, rightTex
         <input
           aria-describedby={error ? errorId : helperText ? helperId : undefined}
           aria-invalid={Boolean(error)}
-          className="h-full min-w-0 flex-1 bg-transparent text-base text-white outline-none placeholder:text-[#7C7C8A]"
+          className="h-full min-w-0 flex-1 bg-transparent text-base text-white outline-none placeholder:text-[#7C7C8A] autofill:shadow-[inset_0_0_0_1000px_#18181B] autofill:[-webkit-text-fill-color:#FFFFFF]"
           id={id}
           type={inputType}
           {...props}

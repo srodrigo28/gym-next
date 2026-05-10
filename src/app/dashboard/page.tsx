@@ -5,13 +5,13 @@ import { useRouter } from "next/navigation";
 import { ArrowRight, Dumbbell, History, Home, LogOut, UserCircle, Weight } from "lucide-react";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 
-const categories = ["Costas", "Biceps", "Triceps", "Ombro"];
+const categories = ["Costas", "Bíceps", "Tríceps", "Ombro"];
 
 const exercises = [
-  { icon: Weight, subtitle: "3 series x 12 repeticoes", title: "Puxada frontal", tone: "#0E7490" },
-  { icon: Dumbbell, subtitle: "3 series x 12 repeticoes", title: "Remada curvada", tone: "#7C3AED" },
-  { icon: Dumbbell, subtitle: "3 series x 12 repeticoes", title: "Remada unilateral", tone: "#2563EB" },
-  { icon: Weight, subtitle: "3 series x 12 repeticoes", title: "Levantamento terra", tone: "#B7791F" },
+  { icon: Weight, subtitle: "3 séries x 12 repetições", title: "Puxada frontal", tone: "#0E7490" },
+  { icon: Dumbbell, subtitle: "3 séries x 12 repetições", title: "Remada curvada", tone: "#7C3AED" },
+  { icon: Dumbbell, subtitle: "3 séries x 12 repetições", title: "Remada unilateral", tone: "#2563EB" },
+  { icon: Weight, subtitle: "3 séries x 12 repetições", title: "Levantamento terra", tone: "#B7791F" },
 ];
 
 export default function DashboardPage() {
@@ -27,8 +27,8 @@ export default function DashboardPage() {
       <header className="flex min-h-[132px] items-center gap-4 bg-[#202024] px-8">
         <Image alt="Avatar" className="rounded-full border-2 border-[#29292E]" height={78} src="/icon.png" width={78} />
         <div className="min-w-0 flex-1">
-          <p className="text-xl text-[#C4C4CC]">Ola,</p>
-          <h1 className="truncate text-2xl font-black text-white">Rodrigo Goncalves</h1>
+          <p className="text-xl text-[#C4C4CC]">Olá,</p>
+          <h1 className="truncate text-2xl font-black text-white">Rodrigo Gonçalves</h1>
         </div>
         <button aria-label="Voltar para o perfil" className="flex h-12 w-12 items-center justify-center rounded-lg text-[#C4C4CC] active:opacity-75" onClick={() => router.push("/home")} type="button">
           <LogOut className="h-7 w-7" />
@@ -51,7 +51,7 @@ export default function DashboardPage() {
           </div>
 
           <div className="flex items-center justify-between px-8">
-            <h2 className="text-2xl font-black text-[#C4C4CC]">Exercicios</h2>
+            <h2 className="text-2xl font-black text-[#C4C4CC]">Exercícios</h2>
             <span className="text-[22px] text-[#C4C4CC]">{exercises.length}</span>
           </div>
 
@@ -76,10 +76,10 @@ export default function DashboardPage() {
       </div>
 
       <nav className="flex h-[86px] items-center justify-around bg-[#202024] pb-2" style={{ paddingBottom: "max(8px, env(safe-area-inset-bottom))" }}>
-        <button aria-label="Inicio" className="flex h-14 w-[72px] items-center justify-center text-[#00B37E]" type="button">
+        <button aria-label="Início" className="flex h-14 w-[72px] items-center justify-center text-[#00B37E]" type="button">
           <Home className="h-8 w-8" />
         </button>
-        <button aria-label="Historico" className="flex h-14 w-[72px] items-center justify-center text-[#C4C4CC]" type="button">
+        <button aria-label="Histórico" className="flex h-14 w-[72px] items-center justify-center text-[#C4C4CC]" type="button">
           <History className="h-8 w-8" />
         </button>
         <button aria-label="Abrir perfil" className="flex h-14 w-[72px] items-center justify-center text-[#C4C4CC]" onClick={() => router.push("/home")} type="button">

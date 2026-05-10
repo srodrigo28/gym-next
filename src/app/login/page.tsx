@@ -31,7 +31,7 @@ export default function LoginPage() {
       router.replace("/home");
     } catch (error) {
       setError("root", {
-        message: error instanceof Error ? error.message : "Nao foi possivel acessar sua conta.",
+        message: error instanceof Error ? error.message : "Não foi possível acessar sua conta.",
       });
     }
   }
@@ -50,7 +50,7 @@ export default function LoginPage() {
           </div>
         </div>
         <div className="mt-12 grid gap-4">
-          <p className="text-center text-lg text-[#C4C4CC]">Ainda nao tem acesso?</p>
+          <p className="text-center text-lg text-[#C4C4CC]">Ainda não tem acesso?</p>
           <Link href="/sign-up">
             <Button icon={<UserPlus className="h-5 w-5" />} title="Criar conta" variant="outline" />
           </Link>

@@ -1,36 +1,155 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gym Flow
 
-## Getting Started
+Aplicativo mobile em Expo/React Native para acompanhamento de treinos, com fluxo inicial de splash, login, cadastro e uma base preparada para integração com API.
 
-First, run the development server:
+## Treino em Dia
+- melhor equilíbrio entre clareza e disponibilidade aparente.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Preview
+
+<p align="center">
+  <img src="./preview/login.png" alt="Tela de login" width="220" />
+  <img src="./preview/cadastro.png" alt="Tela de cadastro" width="220" />
+  <img src="./preview/1-pergunta.png" alt="Tela home" width="220" />
+</p>
+
+<p align="center">
+  <img src="./preview/login.png" alt="Tela de login" width="220" />
+  <img src="./preview/cadastro.png" alt="Tela de cadastro" width="220" />
+  <img src="./preview/1-pergunta.png" alt="Tela home" width="220" />
+</p>
+
+## Status
+
+Base inicial criada com:
+
+- Splash screen
+- Login
+- Cadastro
+- Home mínima pós-autenticação
+- Componentes reutilizáveis de UI
+- Validação de formulários com `react-hook-form` e `zod`
+- Serviços preparados para autenticação via API
+
+## Tecnologias
+
+- Expo SDK 54
+- React 19
+- React Native 0.81
+- Expo Router
+- TypeScript
+- React Hook Form
+- Zod
+- Expo Vector Icons
+
+## Estrutura
+
+```txt
+app/
+  _layout.tsx
+  index.tsx
+  (auth)/
+    _layout.tsx
+    splash.tsx
+    login.tsx
+    sign-up.tsx
+  (app)/
+    _layout.tsx
+    home.tsx
+
+src/
+  components/
+    auth/
+    ui/
+  config/
+  constants/
+  services/
+  types/
+
+preview/
+  login.png
+  sign-up.png
+  home.png
+  exercise.png
+  history.png
+  profile.png
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Instalação
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Instale as dependências:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```powershell
+npm install
+```
 
-## Learn More
+## Execução
 
-To learn more about Next.js, take a look at the following resources:
+Iniciar o Expo:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```powershell
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Rodar no navegador:
 
-## Deploy on Vercel
+```powershell
+npm run web
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Rodar no Android:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```powershell
+npm run android
+```
+
+Rodar no iOS:
+
+```powershell
+npm run ios
+```
+
+## Qualidade
+
+Rodar o lint:
+
+```powershell
+npm run lint
+```
+
+Checar TypeScript:
+
+```powershell
+npx tsc --noEmit
+```
+
+## API
+
+A base para integração com API está em:
+
+- `src/config/env.ts`
+- `src/services/api.ts`
+- `src/services/auth.ts`
+- `src/types/auth.ts`
+
+Hoje o fluxo de autenticação usa mock em `src/services/auth.ts`. Quando a API real estiver pronta, a troca deve ficar concentrada nos serviços, sem espalhar `fetch` pelas telas.
+
+Configure a URL base em `app.json`:
+
+```json
+{
+  "expo": {
+    "extra": {
+      "apiUrl": "https://sua-api.com"
+    }
+  }
+}
+```
+
+## Próximos passos
+
+- Conectar login e cadastro na API real
+- Persistir sessão do usuário
+- Implementar home completa com treinos
+- Criar histórico de exercícios
+- Criar perfil do usuário

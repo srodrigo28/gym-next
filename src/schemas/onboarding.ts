@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const requiredMessage = "Escolha uma opcao para continuar.";
+const requiredMessage = "Escolha uma opção para continuar.";
 
 export const baseOnboardingSchema = z.object({
   sex: z.enum(["male", "female", "prefer_not_to_say"], { message: requiredMessage }),
@@ -9,8 +9,8 @@ export const baseOnboardingSchema = z.object({
   trainingDaysPerWeek: z.union([z.literal(2), z.literal(3), z.literal(4), z.literal(5), z.literal(6)], { message: requiredMessage }),
   trainingDuration: z.enum(["up_to_30", "30_to_45", "45_to_60", "over_60"], { message: requiredMessage }),
   preferredTrainingPeriod: z.enum(["morning", "afternoon", "night", "varies"], { message: requiredMessage }),
-  weightKg: z.number({ message: "Informe seu peso." }).min(30, "Peso minimo: 30 kg.").max(300, "Peso maximo: 300 kg."),
-  heightCm: z.number({ message: "Informe sua altura." }).min(100, "Altura minima: 100 cm.").max(250, "Altura maxima: 250 cm."),
+  weightKg: z.number({ message: "Informe seu peso." }).min(30, "Peso mínimo: 30 kg.").max(300, "Peso máximo: 300 kg."),
+  heightCm: z.number({ message: "Informe sua altura." }).min(100, "Altura mínima: 100 cm.").max(250, "Altura máxima: 250 cm."),
   sleepHours: z.enum(["less_than_5", "5_to_6", "7_to_8", "more_than_8", "varies"], { message: requiredMessage }),
   wakesUpRested: z.enum(["yes", "sometimes", "no"], { message: requiredMessage }),
   gymExperience: z.enum(["never", "short_time", "few_months", "more_than_1_year", "currently_training"], { message: requiredMessage }),

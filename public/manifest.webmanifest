@@ -1,7 +1,7 @@
 {
   "name": "Ignite Gym",
   "short_name": "Ignite Gym",
-  "description": "Treinos, rotina e evolucao em uma experiencia mobile.",
+  "description": "Treinos, rotina e evolução em uma experiência mobile.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

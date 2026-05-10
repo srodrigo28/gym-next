@@ -25,13 +25,13 @@ import { IconButton } from "@/components/ui/IconButton";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 
 const menuItems = [
-  { description: "Conecte relogios e dispositivos para acompanhar atividade e saude.", icon: Watch, title: "Sincronizar dispositivos", tone: "bg-[#D97706]" },
-  { description: "Cadastre refeicoes comuns, horarios e habitos do dia a dia.", icon: Apple, title: "Alimentacoes diarias", tone: "bg-[#0F766E]" },
-  { description: "Escolha ideias de alimentacao alinhadas ao seu objetivo atual.", icon: Utensils, title: "Alimentacao ideal para escolher", tone: "bg-[#BE185D]" },
+  { description: "Conecte relógios e dispositivos para acompanhar atividade e saúde.", icon: Watch, title: "Sincronizar dispositivos", tone: "bg-[#D97706]" },
+  { description: "Cadastre refeições comuns, horários e hábitos do dia a dia.", icon: Apple, title: "Alimentações diárias", tone: "bg-[#0F766E]" },
+  { description: "Escolha ideias de alimentação alinhadas ao seu objetivo atual.", icon: Utensils, title: "Alimentação ideal para escolher", tone: "bg-[#BE185D]" },
   { description: "Escolha estilos, foco e disponibilidade para seus treinos.", icon: Dumbbell, title: "Escolhas de treinos", tone: "bg-[#2563EB]" },
-  { description: "Sugestoes para treino, descanso e rotina a partir do seu perfil.", icon: Lightbulb, title: "Recomendacoes", tone: "bg-[#00875F]" },
-  { description: "Marcos, badges e sinais de constancia na sua jornada.", icon: Trophy, title: "Conquistas", tone: "bg-[#38BDF8]" },
-  { description: "Registre uma frase curta para manter sua motivacao visivel.", icon: Quote, title: "Frase do dia", tone: "bg-[#7C3AED]" },
+  { description: "Sugestões para treino, descanso e rotina a partir do seu perfil.", icon: Lightbulb, title: "Recomendações", tone: "bg-[#00875F]" },
+  { description: "Marcos, badges e sinais de constância na sua jornada.", icon: Trophy, title: "Conquistas", tone: "bg-[#38BDF8]" },
+  { description: "Registre uma frase curta para manter sua motivação visível.", icon: Quote, title: "Frase do dia", tone: "bg-[#7C3AED]" },
 ];
 
 export default function HomePage() {
@@ -69,8 +69,8 @@ export default function HomePage() {
           <IconButton icon={<Camera className="h-6 w-6" />} label="Carregar imagem do perfil" onClick={() => inputRef.current?.click()} />
         </div>
         <div className="relative z-10 grid w-full max-w-[420px] gap-2 px-4 pb-6 text-center">
-          <h1 className="text-2xl font-black text-white/90 drop-shadow">Rodrigo Goncalves</h1>
-          <p className="mx-auto max-w-[300px] text-[15px] leading-5 text-white/75 drop-shadow">Acompanhe suas escolhas, rotina e evolucao.</p>
+          <h1 className="text-2xl font-black text-white/90 drop-shadow">Rodrigo Gonçalves</h1>
+          <p className="mx-auto max-w-[300px] text-[15px] leading-5 text-white/75 drop-shadow">Acompanhe suas escolhas, rotina e evolução.</p>
           {previewImageUri ? (
             <div className="mt-2 flex justify-center gap-2">
               <button className="flex h-10 items-center gap-2 rounded-lg bg-[#00875F] px-4 text-sm font-black text-white" onClick={() => { setProfileImageUri(previewImageUri); setPreviewImageUri(null); }} type="button">
@@ -96,7 +96,7 @@ export default function HomePage() {
 
           <div className="text-center">
             <h2 className="text-xl font-black text-white">Menu do perfil</h2>
-            <p className="mt-1 text-sm leading-5 text-[#C4C4CC]">Escolha uma area para ajustar sua experiencia.</p>
+            <p className="mt-1 text-sm leading-5 text-[#C4C4CC]">Escolha uma área para ajustar sua experiência.</p>
           </div>
 
           <div className="grid gap-2">
@@ -111,7 +111,7 @@ export default function HomePage() {
             </div>
             <div className="flex-1">
               <p className="text-xs font-extrabold uppercase text-[#00B37E]">Em breve</p>
-              <h2 className="text-lg font-black text-white">Evolucao corporal</h2>
+              <h2 className="text-lg font-black text-white">Evolução corporal</h2>
               <p className="text-[13px] leading-5 text-[#C4C4CC]">Peso, medidas, fotos e progresso em uma linha do tempo visual.</p>
             </div>
             <ArrowRight className="h-6 w-6 text-[#C4C4CC]" />
