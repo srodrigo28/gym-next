@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Download, Share, Smartphone, X } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 type BeforeInstallPromptEvent = Event & {
   prompt: () => Promise<void>;
@@ -13,7 +13,8 @@ const DISMISSED_KEY = "next-gyn-install-dismissed-at";
 const DISMISSED_DAYS = 7;
 
 function isStandalone() {
-  return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  const navigatorWithStandalone = window.navigator as Navigator & { standalone?: boolean };
+  return window.matchMedia("(display-mode: standalone)").matches || navigatorWithStandalone.standalone === true;
 }
 
 function isMobileDevice() {
@@ -37,7 +38,7 @@ export function PwaRegister() {
   const [showIosHelp, setShowIosHelp] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
-  const canShowPrompt = useMemo(() => Boolean(installPrompt || showIosHelp), [installPrompt, showIosHelp]);
+  const canShowPrompt = Boolean(installPrompt || showIosHelp);
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) {
@@ -71,12 +72,6 @@ export function PwaRegister() {
 
     return () => window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
   }, []);
-
-  useEffect(() => {
-    if (!canShowPrompt) {
-      setIsVisible(false);
-    }
-  }, [canShowPrompt]);
 
   async function handleInstall() {
     if (showIosHelp && !installPrompt) {

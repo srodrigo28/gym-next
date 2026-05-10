@@ -1,9 +1,21 @@
-const CACHE_NAME = "ignite-gym-shell-v1";
-const STATIC_ASSETS = ["/", "/splash", "/manifest.webmanifest", "/icon.png", "/icons/icon-192.png", "/icons/icon-512.png"];
+const CACHE_NAME = "next-gyn-shell-v2";
+const STATIC_ASSETS = [
+  "/",
+  "/splash",
+  "/manifest.webmanifest",
+  "/icon.png",
+  "/icons/icon-192.png",
+  "/icons/icon-512.png",
+  "/icons/icon-maskable-512.png",
+  "/icons/apple-touch-icon.png",
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS)).then(() => self.skipWaiting()),
+    caches
+      .open(CACHE_NAME)
+      .then((cache) => cache.addAll(STATIC_ASSETS))
+      .then(() => self.skipWaiting()),
   );
 });
 
@@ -18,23 +30,38 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   const request = event.request;
+  const url = new URL(request.url);
 
-  if (request.method !== "GET") {
+  if (request.method !== "GET" || url.origin !== self.location.origin) {
     return;
   }
 
-  if (request.destination === "image" || request.destination === "font" || request.destination === "style") {
-    event.respondWith(caches.match(request).then((cached) => cached ?? fetch(request)));
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          return response;
+        })
+        .catch(() => caches.match(request).then((cached) => cached ?? caches.match("/splash"))),
+    );
     return;
   }
 
-  event.respondWith(
-    fetch(request)
-      .then((response) => {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
-        return response;
-      })
-      .catch(() => caches.match(request).then((cached) => cached ?? caches.match("/splash"))),
-  );
+  if (["image", "font", "style", "script", "manifest"].includes(request.destination)) {
+    event.respondWith(
+      caches.match(request).then((cached) => {
+        const fresh = fetch(request)
+          .then((response) => {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+            return response;
+          })
+          .catch(() => cached);
+
+        return cached ?? fresh;
+      }),
+    );
+  }
 });
