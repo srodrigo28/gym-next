@@ -81,3 +81,171 @@ button {
   scrollbar-width: thin;
   scrollbar-color: #3a3a40 transparent;
 }
+
+.app-loading-mark {
+  animation: app-loading-float 1.8s ease-in-out infinite;
+}
+
+.app-loading-mark svg {
+  animation: app-loading-pulse 1.8s ease-in-out infinite;
+}
+
+.app-loading-bar {
+  animation: app-loading-progress 1.6s ease-in-out infinite;
+  transform-origin: left center;
+}
+
+.pwa-install-shell {
+  position: fixed;
+  inset-inline: 0;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 80;
+  display: flex;
+  justify-content: center;
+  padding-inline: 14px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+  transition:
+    opacity 240ms ease,
+    transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.pwa-install-shell-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.pwa-install-card {
+  position: relative;
+  display: flex;
+  width: min(100%, 402px);
+  min-height: 88px;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 179, 126, 0.36);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(0, 179, 126, 0.12), transparent 46%),
+    rgba(32, 32, 36, 0.96);
+  box-shadow: 0 20px 54px rgba(0, 0, 0, 0.48);
+  padding: 14px 14px 14px 12px;
+  pointer-events: auto;
+  backdrop-filter: blur(18px);
+}
+
+.pwa-install-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(0, 179, 126, 0.18), transparent);
+  animation: pwa-install-shine 2.8s ease-in-out infinite;
+  transform: translateX(-110%);
+  pointer-events: none;
+}
+
+.pwa-install-close,
+.pwa-install-action,
+.pwa-install-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pwa-install-close {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  height: 30px;
+  width: 30px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #7c7c8a;
+}
+
+.pwa-install-icon {
+  display: flex;
+  height: 56px;
+  width: 56px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #121214;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.pwa-install-action {
+  flex: 0 0 auto;
+  gap: 6px;
+  min-height: 40px;
+  border: 1px solid #00b37e;
+  border-radius: 10px;
+  background: #00875f;
+  color: #ffffff;
+  padding-inline: 12px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.pwa-install-hint {
+  flex: 0 0 auto;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  background: rgba(0, 179, 126, 0.12);
+  color: #00b37e;
+}
+
+@keyframes app-loading-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes app-loading-pulse {
+  0%,
+  100% {
+    opacity: 0.82;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes app-loading-progress {
+  0% {
+    transform: translateX(-55%) scaleX(0.35);
+  }
+
+  50% {
+    transform: translateX(18%) scaleX(0.72);
+  }
+
+  100% {
+    transform: translateX(105%) scaleX(0.35);
+  }
+}
+
+@keyframes pwa-install-shine {
+  0%,
+  35% {
+    transform: translateX(-110%);
+  }
+
+  70%,
+  100% {
+    transform: translateX(110%);
+  }
+}

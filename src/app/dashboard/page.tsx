@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Dumbbell, History, Home, LogOut, UserCircle, Weight } from "lucide-react";
+import { AppLoading } from "@/components/app/AppLoading";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 
 const categories = ["Costas", "Bíceps", "Tríceps", "Ombro"];
@@ -19,7 +20,7 @@ export default function DashboardPage() {
   const { isChecking } = useRequireAuth();
 
   if (isChecking) {
-    return <div className="flex min-h-dvh items-center justify-center bg-[#121214] text-[#C4C4CC]">Carregando...</div>;
+    return <AppLoading message="Carregando treinos" />;
   }
 
   return (

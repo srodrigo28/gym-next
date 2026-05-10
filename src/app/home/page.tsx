@@ -12,6 +12,7 @@ import {
   Dumbbell,
   Home,
   Lightbulb,
+  LogOut,
   Pencil,
   Quote,
   Ruler,
@@ -22,7 +23,10 @@ import {
   X,
 } from "lucide-react";
 import { IconButton } from "@/components/ui/IconButton";
+import { Button } from "@/components/ui/Button";
+import { AppLoading } from "@/components/app/AppLoading";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
+import { signOut } from "@/lib/auth";
 
 const menuItems = [
   { description: "Conecte relógios e dispositivos para acompanhar atividade e saúde.", icon: Watch, title: "Sincronizar dispositivos", tone: "bg-[#D97706]" },
@@ -40,6 +44,8 @@ export default function HomePage() {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [profileImageUri, setProfileImageUri] = useState<string | null>(null);
   const [previewImageUri, setPreviewImageUri] = useState<string | null>(null);
+  const [isSignOutOpen, setIsSignOutOpen] = useState(false);
+  const [isSigningOut, setIsSigningOut] = useState(false);
   const coverImage = previewImageUri || profileImageUri || "/icon.png";
 
   function handleFile(file?: File) {
@@ -53,8 +59,14 @@ export default function HomePage() {
     reader.readAsDataURL(file);
   }
 
+  async function handleSignOut() {
+    setIsSigningOut(true);
+    await signOut();
+    router.replace("/login");
+  }
+
   if (isChecking) {
-    return <div className="flex min-h-dvh items-center justify-center bg-[#121214] text-[#C4C4CC]">Carregando...</div>;
+    return <AppLoading message="Carregando perfil" />;
   }
 
   return (
@@ -67,6 +79,7 @@ export default function HomePage() {
           <IconButton icon={<Home className="h-6 w-6" />} label="Ir para a tela inicial de treinos" onClick={() => router.push("/dashboard")} />
           <IconButton icon={<Pencil className="h-6 w-6" />} label="Alterar perfil" onClick={() => inputRef.current?.click()} />
           <IconButton icon={<Camera className="h-6 w-6" />} label="Carregar imagem do perfil" onClick={() => inputRef.current?.click()} />
+          <IconButton className="border-[#F75A68]/80 text-[#F75A68]" icon={<LogOut className="h-6 w-6" />} label="Sair da conta" onClick={() => setIsSignOutOpen(true)} />
         </div>
         <div className="relative z-10 grid w-full max-w-[420px] gap-2 px-4 pb-6 text-center">
           <h1 className="text-2xl font-black text-white/90 drop-shadow">Rodrigo Gonçalves</h1>
@@ -118,6 +131,12 @@ export default function HomePage() {
           </button>
         </div>
       </div>
+      <SignOutConfirmDialog
+        isLoading={isSigningOut}
+        isOpen={isSignOutOpen}
+        onClose={() => setIsSignOutOpen(false)}
+        onConfirm={handleSignOut}
+      />
     </section>
   );
 }
@@ -145,5 +164,29 @@ function ProfileMenuCard({ item }: { item: (typeof menuItems)[number] }) {
       </div>
       <ArrowRight className="h-5 w-5 text-[#C4C4CC]" />
     </button>
+  );
+}
+
+function SignOutConfirmDialog({ isLoading, isOpen, onClose, onConfirm }: { isLoading: boolean; isOpen: boolean; onClose: () => void; onConfirm: () => void }) {
+  if (!isOpen) return null;
+
+  return (
+    <div className="absolute inset-0 z-50 flex items-end justify-center bg-black/70 px-4 pb-4 pt-10 backdrop-blur-sm" role="presentation">
+      <div aria-labelledby="sign-out-title" aria-modal="true" className="w-full rounded-2xl border border-[#29292E] bg-[#202024] p-5 shadow-2xl shadow-black/50" role="dialog">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#3B1F25] text-[#F75A68]">
+          <LogOut className="h-7 w-7" />
+        </div>
+
+        <div className="mt-4 text-center">
+          <h2 className="text-xl font-black text-white" id="sign-out-title">Sair da conta?</h2>
+          <p className="mt-2 text-sm leading-5 text-[#C4C4CC]">Voce voltara para a tela de login e podera acessar novamente quando quiser.</p>
+        </div>
+
+        <div className="mt-5 grid gap-3">
+          <Button className="h-12 border-[#F75A68] bg-[#F75A68] text-base" icon={<LogOut className="h-5 w-5" />} loading={isLoading} onClick={onConfirm} title="Sim, sair" />
+          <Button className="h-12 text-base" disabled={isLoading} onClick={onClose} title="Continuar no app" variant="outline" />
+        </div>
+      </div>
+    </div>
   );
 }

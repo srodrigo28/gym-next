@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { Dumbbell } from "lucide-react";
+import { AppLoading } from "@/components/app/AppLoading";
 import { AuthBackground } from "@/components/auth/AuthBackground";
 
 export default function SplashPage() {
@@ -11,18 +11,14 @@ export default function SplashPage() {
   useEffect(() => {
     const timeout = window.setTimeout(() => {
       router.replace("/login");
-    }, 1200);
+    }, 2400);
 
     return () => window.clearTimeout(timeout);
   }, [router]);
 
   return (
     <AuthBackground contentClassName="flex items-center justify-center">
-      <div className="flex flex-col items-center gap-3">
-        <Dumbbell className="h-14 w-14 text-[#00B37E]" />
-        <h1 className="text-[42px] font-bold text-white">Next Gyn</h1>
-        <p className="text-lg text-[#C4C4CC]">Treine sua mente e o seu corpo</p>
-      </div>
+      <AppLoading className="min-h-0 bg-transparent" message="Next Gyn" />
     </AuthBackground>
   );
 }
