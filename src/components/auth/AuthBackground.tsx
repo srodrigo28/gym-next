@@ -15,6 +15,7 @@ export function AuthBackground({ children, contentClassName = "" }: AuthBackgrou
         height={520}
         priority
         src="/icon.png"
+        style={{ height: 520, width: 520 }}
         width={520}
       />
       <div className="absolute inset-0 bg-[#121214]/95" />

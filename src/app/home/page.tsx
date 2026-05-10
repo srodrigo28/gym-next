@@ -10,9 +10,7 @@ import {
   ChartLine,
   Check,
   Dumbbell,
-  Home,
   Lightbulb,
-  Pencil,
   Quote,
   Ruler,
   Target,
@@ -73,11 +71,9 @@ export default function HomePage() {
     <section className="relative flex h-dvh flex-col overflow-hidden bg-[#121214] text-white" style={{ paddingTop: "env(safe-area-inset-top)" }}>
       <input ref={inputRef} accept="image/*" className="hidden" onChange={(event) => handleFile(event.target.files?.[0])} type="file" />
       <header className="relative flex h-[22dvh] min-h-[176px] max-h-[210px] shrink-0 items-end justify-center overflow-hidden">
-        <Image alt="" className="object-cover opacity-90" fill priority src={coverImage} unoptimized={coverImage.startsWith("data:")} />
+        <Image alt="" className="object-cover opacity-90" fill priority sizes="100vw" src={coverImage} unoptimized={coverImage.startsWith("data:")} />
         <div className="absolute inset-0 bg-[#121214]/30" />
         <div className="absolute right-3 top-3 grid gap-2">
-          <IconButton icon={<Home className="h-[18px] w-[18px]" />} label="Ir para a tela inicial de treinos" onClick={() => router.push("/dashboard")} />
-          <IconButton icon={<Pencil className="h-[18px] w-[18px]" />} label="Alterar perfil" onClick={() => inputRef.current?.click()} />
           <IconButton icon={<Camera className="h-[18px] w-[18px]" />} label="Carregar imagem do perfil" onClick={() => inputRef.current?.click()} />
         </div>
         <div className="relative z-10 grid w-full max-w-[420px] gap-1 px-4 pb-4 text-center">
@@ -157,8 +153,10 @@ function SummaryPill({ icon, label, value }: { icon: React.ReactNode; label: str
 
 function ProfileMenuCard({ item }: { item: (typeof menuItems)[number] }) {
   const Icon = item.icon;
+  const router = useRouter();
+
   return (
-    <button className="flex min-h-[84px] items-center gap-3.5 rounded-lg bg-[#202024] p-3.5 text-left active:opacity-80" type="button">
+    <button className="flex min-h-[84px] items-center gap-3.5 rounded-lg bg-[#202024] p-3.5 text-left active:opacity-80" onClick={() => item.title === "Sincronizar dispositivos" ? router.push("/conexao-watch") : undefined} type="button">
       <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${item.tone}`}>
         <Icon className="h-6 w-6 text-white" />
       </div>

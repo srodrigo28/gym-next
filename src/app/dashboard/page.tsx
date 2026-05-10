@@ -76,7 +76,7 @@ export default function DashboardPage() {
   return (
     <section className="relative flex h-dvh flex-col overflow-hidden bg-[#121214] text-white" style={{ paddingTop: "env(safe-area-inset-top)" }}>
       <header className="flex min-h-[88px] items-center gap-3 bg-[#202024] px-4">
-        <Image alt="Avatar" className="h-14 w-14 rounded-full border-2 border-[#29292E]" height={56} src="/icon.png" width={56} />
+        <Image alt="Avatar" className="h-14 w-14 rounded-full border-2 border-[#29292E]" height={56} src="/icon.png" style={{ height: 56, width: 56 }} width={56} />
         <div className="min-w-0 flex-1">
           <p className="text-sm leading-5 text-[#C4C4CC]">Olá,</p>
           <h1 className="truncate text-xl font-black leading-6 text-white">Caroline Oliveira</h1>
