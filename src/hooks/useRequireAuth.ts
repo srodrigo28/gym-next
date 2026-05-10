@@ -1,18 +1,30 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { getAuthSession } from "@/lib/auth";
+import type { AuthResponse } from "@/types/auth";
 
 export function useRequireAuth() {
   const router = useRouter();
-  const session = useMemo(() => getAuthSession(), []);
+  const [session, setSession] = useState<AuthResponse | null>(null);
+  const [isChecking, setIsChecking] = useState(true);
 
   useEffect(() => {
-    if (!session) {
-      router.replace("/login");
-    }
-  }, [router, session]);
+    const timeout = window.setTimeout(() => {
+      const currentSession = getAuthSession();
 
-  return { isChecking: false, session };
+      if (!currentSession) {
+        router.replace("/login");
+        return;
+      }
+
+      setSession(currentSession);
+      setIsChecking(false);
+    }, 0);
+
+    return () => window.clearTimeout(timeout);
+  }, [router]);
+
+  return { isChecking, session };
 }

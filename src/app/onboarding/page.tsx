@@ -109,13 +109,27 @@ const labels: Record<string, string> = {
 
 export default function OnboardingPage() {
   const router = useRouter();
-  const [profile, setProfile] = useState<OnboardingProfile>(() => getOnboardingDraft());
+  const [profile, setProfile] = useState<OnboardingProfile>({});
   const [step, setStep] = useState(0);
   const [isSaving, setIsSaving] = useState(false);
+  const [hasLoadedDraft, setHasLoadedDraft] = useState(false);
 
   useEffect(() => {
+    const timeout = window.setTimeout(() => {
+      setProfile(getOnboardingDraft());
+      setHasLoadedDraft(true);
+    }, 0);
+
+    return () => window.clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
+    if (!hasLoadedDraft) {
+      return;
+    }
+
     saveOnboardingDraft(profile);
-  }, [profile]);
+  }, [hasLoadedDraft, profile]);
 
   const visibleStepIndexes = useMemo(() => getVisibleStepIndexes(profile), [profile]);
   const activeStep = visibleStepIndexes.includes(step) ? step : (visibleStepIndexes[0] ?? 0);
