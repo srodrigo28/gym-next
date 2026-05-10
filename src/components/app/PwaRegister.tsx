@@ -9,7 +9,7 @@ type BeforeInstallPromptEvent = Event & {
   userChoice: Promise<{ outcome: "accepted" | "dismissed"; platform: string }>;
 };
 
-const DISMISSED_KEY = "next-gyn-install-dismissed-at-v2";
+const DISMISSED_KEY = "next-gyn-install-dismissed-at-v4";
 const DISMISSED_DAYS = 7;
 
 function isStandalone() {
@@ -23,6 +23,11 @@ function isMobileDevice() {
 
 function isIosDevice() {
   return /iPhone|iPad|iPod/i.test(window.navigator.userAgent);
+}
+
+function isIosSafari() {
+  const userAgent = window.navigator.userAgent;
+  return isIosDevice() && /Safari/i.test(userAgent) && !/CriOS|FxiOS|EdgiOS|OPiOS/i.test(userAgent);
 }
 
 function wasRecentlyDismissed() {
@@ -39,6 +44,9 @@ export function PwaRegister() {
   const [isVisible, setIsVisible] = useState(false);
 
   const canShowPrompt = Boolean(installPrompt || showManualHelp);
+  const isIos = typeof window !== "undefined" && isIosDevice();
+  const isSafari = typeof window !== "undefined" && isIosSafari();
+  const isManualIos = showManualHelp && !installPrompt && isIos;
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) {
@@ -78,10 +86,6 @@ export function PwaRegister() {
   }, []);
 
   async function handleInstall() {
-    if (showManualHelp && !installPrompt) {
-      return;
-    }
-
     if (!installPrompt) return;
 
     await installPrompt.prompt();
@@ -107,7 +111,7 @@ export function PwaRegister() {
 
   return (
     <div className={`pwa-install-shell ${isVisible ? "pwa-install-shell-visible" : ""}`} aria-live="polite">
-      <div className="pwa-install-card">
+      <div className={`pwa-install-card ${isManualIos ? "pwa-install-card-expanded" : ""}`}>
         <button aria-label="Fechar sugestão de instalação" className="pwa-install-close" onClick={handleDismiss} type="button">
           <X className="h-5 w-5" />
         </button>
@@ -117,11 +121,21 @@ export function PwaRegister() {
         </div>
 
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-black text-white">Instalar Next Gyn</p>
+          <p className="text-sm font-black text-white">{isIos ? "Adicionar Next Gyn" : "Instalar Next Gyn"}</p>
           {showManualHelp && !installPrompt ? (
-            <p className="mt-1 text-xs leading-4 text-[#C4C4CC]">
-              Toque em <Share className="inline h-3.5 w-3.5" /> ou no menu do navegador e escolha Adicionar à tela inicial.
-            </p>
+            <div className="mt-1 text-xs leading-4 text-[#C4C4CC]">
+              {isIos && !isSafari ? (
+                <p>Abra esta página no Safari. O iPhone só adiciona PWA à tela inicial pelo Safari.</p>
+              ) : isIos ? (
+                <ol className="pwa-install-steps">
+                  <li>Toque em compartilhar <Share className="inline h-3.5 w-3.5" />.</li>
+                  <li>Escolha “Adicionar à Tela de Início”.</li>
+                  <li>Toque em “Adicionar”.</li>
+                </ol>
+              ) : (
+                <p>Toque no menu do navegador e escolha Instalar app.</p>
+              )}
+            </div>
           ) : (
             <p className="mt-1 text-xs leading-4 text-[#C4C4CC]">Abra mais rápido, em tela cheia e com melhor experiência mobile.</p>
           )}

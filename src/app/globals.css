@@ -181,6 +181,12 @@ button {
   backdrop-filter: blur(18px);
 }
 
+.pwa-install-card-expanded {
+  align-items: flex-start;
+  min-height: 124px;
+  padding-block: 16px;
+}
+
 .pwa-install-card::before {
   content: "";
   position: absolute;
@@ -189,6 +195,15 @@ button {
   animation: pwa-install-shine 2.8s ease-in-out infinite;
   transform: translateX(-110%);
   pointer-events: none;
+}
+
+.pwa-install-steps {
+  margin: 6px 0 0;
+  padding-left: 16px;
+}
+
+.pwa-install-steps li + li {
+  margin-top: 3px;
 }
 
 .pwa-install-close,
