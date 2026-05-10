@@ -4,7 +4,7 @@ import { History, Home, LogOut, UserCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 type AppBottomNavProps = {
-  active: "home" | "profile";
+  active: "history" | "home" | "profile";
   onSignOut: () => void;
 };
 
@@ -16,7 +16,7 @@ export function AppBottomNav({ active, onSignOut }: AppBottomNavProps) {
       <button aria-label="Inicio" className={`flex h-11 w-14 items-center justify-center ${active === "home" ? "text-[#00B37E]" : "text-[#C4C4CC]"}`} onClick={() => router.push("/dashboard")} type="button">
         <Home className="h-6 w-6" />
       </button>
-      <button aria-label="Historico" className="flex h-11 w-14 items-center justify-center text-[#C4C4CC]" type="button">
+      <button aria-label="Histórico" className={`flex h-11 w-14 items-center justify-center ${active === "history" ? "text-[#00B37E]" : "text-[#C4C4CC]"}`} onClick={() => router.push("/history")} type="button">
         <History className="h-6 w-6" />
       </button>
       <button aria-label="Abrir perfil" className={`flex h-11 w-14 items-center justify-center ${active === "profile" ? "text-[#00B37E]" : "text-[#C4C4CC]"}`} onClick={() => router.push("/home")} type="button">

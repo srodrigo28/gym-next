@@ -83,11 +83,24 @@ button {
 }
 
 .category-scroll {
-  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: #00b37e #202024;
+  scrollbar-width: thin;
+  touch-action: pan-x;
 }
 
 .category-scroll::-webkit-scrollbar {
-  display: none;
+  height: 4px;
+}
+
+.category-scroll::-webkit-scrollbar-track {
+  background: #202024;
+  border-radius: 999px;
+}
+
+.category-scroll::-webkit-scrollbar-thumb {
+  background: #00b37e;
+  border-radius: 999px;
 }
 
 .profile-scroll {
