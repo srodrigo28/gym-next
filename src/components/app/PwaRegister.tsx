@@ -9,7 +9,7 @@ type BeforeInstallPromptEvent = Event & {
   userChoice: Promise<{ outcome: "accepted" | "dismissed"; platform: string }>;
 };
 
-const DISMISSED_KEY = "next-gyn-install-dismissed-at";
+const DISMISSED_KEY = "next-gyn-install-dismissed-at-v2";
 const DISMISSED_DAYS = 7;
 
 function isStandalone() {
@@ -35,10 +35,10 @@ function wasRecentlyDismissed() {
 
 export function PwaRegister() {
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
-  const [showIosHelp, setShowIosHelp] = useState(false);
+  const [showManualHelp, setShowManualHelp] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
-  const canShowPrompt = Boolean(installPrompt || showIosHelp);
+  const canShowPrompt = Boolean(installPrompt || showManualHelp);
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) {
@@ -61,20 +61,24 @@ export function PwaRegister() {
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
-    if (isIosDevice()) {
-      window.setTimeout(() => {
+    const fallbackTimer = window.setTimeout(
+      () => {
         if (!isStandalone() && !wasRecentlyDismissed()) {
-          setShowIosHelp(true);
+          setShowManualHelp(true);
           setIsVisible(true);
         }
-      }, 900);
-    }
+      },
+      isIosDevice() ? 900 : 1600,
+    );
 
-    return () => window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    return () => {
+      window.clearTimeout(fallbackTimer);
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    };
   }, []);
 
   async function handleInstall() {
-    if (showIosHelp && !installPrompt) {
+    if (showManualHelp && !installPrompt) {
       return;
     }
 
@@ -87,13 +91,15 @@ export function PwaRegister() {
 
     if (choice.outcome === "dismissed") {
       window.localStorage.setItem(DISMISSED_KEY, String(Date.now()));
+    } else {
+      setShowManualHelp(false);
     }
   }
 
   function handleDismiss() {
     window.localStorage.setItem(DISMISSED_KEY, String(Date.now()));
     setInstallPrompt(null);
-    setShowIosHelp(false);
+    setShowManualHelp(false);
     setIsVisible(false);
   }
 
@@ -112,16 +118,16 @@ export function PwaRegister() {
 
         <div className="min-w-0 flex-1">
           <p className="text-sm font-black text-white">Instalar Next Gyn</p>
-          {showIosHelp && !installPrompt ? (
+          {showManualHelp && !installPrompt ? (
             <p className="mt-1 text-xs leading-4 text-[#C4C4CC]">
-              Toque em <Share className="inline h-3.5 w-3.5" /> e escolha Adicionar a Tela de Inicio.
+              Toque em <Share className="inline h-3.5 w-3.5" /> ou no menu do navegador e escolha Adicionar a Tela de Inicio.
             </p>
           ) : (
             <p className="mt-1 text-xs leading-4 text-[#C4C4CC]">Abra mais rapido, em tela cheia e com melhor experiencia mobile.</p>
           )}
         </div>
 
-        {showIosHelp && !installPrompt ? (
+        {showManualHelp && !installPrompt ? (
           <div className="pwa-install-hint" aria-hidden>
             <Smartphone className="h-5 w-5" />
           </div>

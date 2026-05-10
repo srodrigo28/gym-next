@@ -1,4 +1,4 @@
-const CACHE_NAME = "next-gyn-shell-v2";
+const CACHE_NAME = "next-gyn-shell-v3";
 const STATIC_ASSETS = [
   "/",
   "/splash",

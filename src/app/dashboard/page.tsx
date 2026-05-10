@@ -37,24 +37,24 @@ export default function DashboardPage() {
 
   return (
     <section className="relative flex h-dvh flex-col overflow-hidden bg-[#121214] text-white" style={{ paddingTop: "env(safe-area-inset-top)" }}>
-      <header className="flex min-h-[132px] items-center gap-4 bg-[#202024] px-8">
-        <Image alt="Avatar" className="rounded-full border-2 border-[#29292E]" height={78} src="/icon.png" width={78} />
+      <header className="flex min-h-[104px] items-center gap-3 bg-[#202024] px-4">
+        <Image alt="Avatar" className="h-16 w-16 rounded-full border-2 border-[#29292E]" height={64} src="/icon.png" width={64} />
         <div className="min-w-0 flex-1">
-          <p className="text-xl text-[#C4C4CC]">Ola,</p>
-          <h1 className="truncate text-2xl font-black text-white">Caroline Oliveira</h1>
+          <p className="text-base leading-5 text-[#C4C4CC]">Ola,</p>
+          <h1 className="truncate text-[22px] font-black leading-7 text-white">Caroline Oliveira</h1>
         </div>
-        <button aria-label="Voltar para o perfil" className="flex h-12 w-12 items-center justify-center rounded-lg text-[#C4C4CC] active:opacity-75" onClick={() => router.push("/home")} type="button">
-          <UserCircle className="h-7 w-7" />
+        <button aria-label="Voltar para o perfil" className="flex h-10 w-10 items-center justify-center rounded-lg text-[#C4C4CC] active:opacity-75" onClick={() => router.push("/home")} type="button">
+          <UserCircle className="h-6 w-6" />
         </button>
       </header>
 
-      <div className="app-scroll min-h-0 flex-1 overflow-y-auto pb-[calc(110px+env(safe-area-inset-bottom))]">
-        <div className="grid gap-8 py-8">
-          <div className="app-scroll flex gap-4 overflow-x-auto px-8">
+      <div className="app-scroll min-h-0 flex-1 overflow-y-auto pb-[calc(88px+env(safe-area-inset-bottom))]">
+        <div className="grid gap-5 py-5">
+          <div className="app-scroll flex gap-3 overflow-x-auto px-4">
             {categories.map((category, index) => (
               <button
                 aria-pressed={index === 0}
-                className={`h-[58px] min-w-36 rounded-lg border px-6 text-[17px] font-extrabold uppercase ${index === 0 ? "border-[#00B37E] bg-[#202024] text-[#00B37E]" : "border-transparent bg-[#202024] text-[#C4C4CC]"}`}
+                className={`h-12 min-w-28 rounded-lg border px-4 text-sm font-extrabold uppercase ${index === 0 ? "border-[#00B37E] bg-[#202024] text-[#00B37E]" : "border-transparent bg-[#202024] text-[#C4C4CC]"}`}
                 key={category}
                 type="button"
               >
@@ -63,24 +63,24 @@ export default function DashboardPage() {
             ))}
           </div>
 
-          <div className="flex items-center justify-between px-8">
-            <h2 className="text-2xl font-black text-[#C4C4CC]">Exercicios</h2>
-            <span className="text-[22px] text-[#C4C4CC]">{exercises.length}</span>
+          <div className="flex items-center justify-between px-4">
+            <h2 className="text-xl font-black text-[#C4C4CC]">Exercicios</h2>
+            <span className="text-lg text-[#C4C4CC]">{exercises.length}</span>
           </div>
 
-          <div className="grid gap-4 px-8">
+          <div className="grid gap-3 px-4">
             {exercises.map((exercise) => {
               const Icon = exercise.icon;
               return (
-                <button className="flex min-h-[104px] items-center gap-4 rounded-lg bg-[#29292E] p-4 text-left active:opacity-80" key={exercise.title} type="button">
-                  <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-lg" style={{ backgroundColor: exercise.tone }}>
-                    <Icon className="h-8 w-8 text-white" />
+                <button className="flex min-h-[88px] items-center gap-3 rounded-lg bg-[#29292E] p-3 text-left active:opacity-80" key={exercise.title} type="button">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg" style={{ backgroundColor: exercise.tone }}>
+                    <Icon className="h-7 w-7 text-white" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-[21px] font-black leading-6 text-white">{exercise.title}</h3>
-                    <p className="mt-2 text-[16px] leading-5 text-[#C4C4CC]">{exercise.subtitle}</p>
+                    <h3 className="text-[17px] font-black leading-5 text-white">{exercise.title}</h3>
+                    <p className="mt-1 text-sm leading-[18px] text-[#C4C4CC]">{exercise.subtitle}</p>
                   </div>
-                  <ArrowRight className="h-7 w-7 text-[#7C7C8A]" />
+                  <ArrowRight className="h-5 w-5 shrink-0 text-[#7C7C8A]" />
                 </button>
               );
             })}
