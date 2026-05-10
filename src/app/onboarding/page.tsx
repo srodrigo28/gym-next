@@ -11,6 +11,7 @@ import {
   Calendar,
   Camera,
   CheckCircle,
+  ChevronDown,
   Dumbbell,
   Flame,
   Heart,
@@ -406,19 +407,39 @@ function SummaryStep({ profile }: { profile: OnboardingProfile }) {
   const bmiResult = bmi ? getBmiResult(bmi) : null;
   const currentLevel = getCurrentJourneyLevel(profile);
   const [targetLevel, setTargetLevel] = useState(currentLevel === "performance" ? "performance" : "evolution");
+  const [isSummaryOpen, setIsSummaryOpen] = useState(false);
 
   return (
     <div className="grid gap-4">
-      <div className="grid grid-cols-2 gap-2 rounded-lg bg-[#202024] p-4">
-        <SummaryRow label="Treinos" value={`${profile.trainingDaysPerWeek ?? "-"}x por semana`} />
-        <SummaryRow label="Medidas" value={`${profile.weightKg ?? "-"} kg / ${profile.heightCm ?? "-"} cm`} />
-        <SummaryRow label="Sono" value={profile.sleepHours ? labels[profile.sleepHours] : "-"} />
-        <SummaryRow label="Humor" value={profile.moodPattern ? labels[profile.moodPattern] : "-"} />
-        <SummaryRow label="Refrigerante" value={profile.drinksSoda === "yes" && profile.sodaFrequency ? labels[profile.sodaFrequency] : profile.drinksSoda ? labels[profile.drinksSoda] : "-"} />
-        <SummaryRow label="Academia" value={profile.gymExperience ? labels[profile.gymExperience] : "-"} />
-        <SummaryRow label="Profissional" value={profile.trainsProfessionally ? labels[profile.trainsProfessionally] : "-"} />
-        <SummaryRow label="Fotos" value={profile.wantsProgressPhotos ? labels[profile.wantsProgressPhotos] : "-"} />
-      </div>
+      <section className="overflow-hidden rounded-lg bg-[#202024]">
+        <button
+          aria-expanded={isSummaryOpen}
+          className="flex min-h-[64px] w-full items-center justify-between gap-3 px-4 text-left active:opacity-80"
+          onClick={() => setIsSummaryOpen((current) => !current)}
+          type="button"
+        >
+          <div>
+            <h2 className="text-base font-black text-white">Resumo das respostas</h2>
+            <p className="text-sm text-[#C4C4CC]">8 itens preenchidos</p>
+          </div>
+          <ChevronDown className={`h-6 w-6 text-[#00B37E] transition-transform duration-300 ${isSummaryOpen ? "rotate-180" : ""}`} />
+        </button>
+
+        <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isSummaryOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+          <div className="overflow-hidden">
+            <div className="grid grid-cols-2 gap-2 px-4 pb-4">
+              <SummaryRow label="Treinos" value={`${profile.trainingDaysPerWeek ?? "-"}x por semana`} />
+              <SummaryRow label="Medidas" value={`${profile.weightKg ?? "-"} kg / ${profile.heightCm ?? "-"} cm`} />
+              <SummaryRow label="Sono" value={profile.sleepHours ? labels[profile.sleepHours] : "-"} />
+              <SummaryRow label="Humor" value={profile.moodPattern ? labels[profile.moodPattern] : "-"} />
+              <SummaryRow label="Refrigerante" value={profile.drinksSoda === "yes" && profile.sodaFrequency ? labels[profile.sodaFrequency] : profile.drinksSoda ? labels[profile.drinksSoda] : "-"} />
+              <SummaryRow label="Academia" value={profile.gymExperience ? labels[profile.gymExperience] : "-"} />
+              <SummaryRow label="Profissional" value={profile.trainsProfessionally ? labels[profile.trainsProfessionally] : "-"} />
+              <SummaryRow label="Fotos" value={profile.wantsProgressPhotos ? labels[profile.wantsProgressPhotos] : "-"} />
+            </div>
+          </div>
+        </div>
+      </section>
       <JourneyScale currentLevel={currentLevel} onTargetChange={setTargetLevel} targetLevel={targetLevel} />
       {bmiResult && bmi ? (
         <div className="grid gap-2 rounded-lg border bg-[#202024] p-4 text-center" style={{ borderColor: bmiResult.color }}>

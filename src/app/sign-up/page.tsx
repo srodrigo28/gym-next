@@ -48,6 +48,7 @@ export default function SignUpPage() {
 
       <form
         className="relative z-10 flex min-h-dvh flex-col px-10"
+        noValidate
         onSubmit={handleSubmit(handleSignUp)}
         style={{
           paddingBottom: "max(80px, env(safe-area-inset-bottom))",
